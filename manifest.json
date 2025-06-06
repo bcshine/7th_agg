@@ -2,7 +2,7 @@
   "name": "중간계AI 스튜디오",
   "short_name": "중간계AI",
   "description": "소상공인을 위한 AI 서비스 플랫폼",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
@@ -38,6 +38,6 @@
   ],
   "categories": ["business", "productivity", "utilities"],
   "lang": "ko",
-  "scope": "/",
+  "scope": "./",
   "id": "jungganggye-ai-studio"
 } 

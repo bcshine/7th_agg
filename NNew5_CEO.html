@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEO 인사말 - 중간계 AI 스튜디오</title>
+    <!-- 넥슨폰트 웹폰트 불러오기 - 예쁜 넥슨 글꼴을 사용해요 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff" />
+    
+    <style>
+        /* 넥슨폰트 정의 - 웹에서 사용할 수 있는 예쁜 글꼴이에요 */
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 전체 페이지 기본 설정 - 웹페이지 전체의 기본 모양을 정하는 곳이에요 */
+        * {
+            margin: 0; /* 여백 없애기 - 모든 요소가 딱 붙어있게 해줘요 */
+            padding: 0; /* 안쪽 여백 없애기 - 내용이 모서리에 딱 붙게 해줘요 */
+            box-sizing: border-box; /* 크기 계산을 쉽게 하기 - 테두리 포함해서 크기를 계산해줘요 */
+        }
+
+        /* 전체 페이지 배경과 폰트 설정 - 페이지 전체의 기본 스타일이에요 */
+        body {
+            font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 넥슨폰트 사용하기 - 예쁜 글꼴로 보여줘요 */
+            background-color: white; /* 배경색을 흰색으로 - 깔끔하게 보이게 해줘요 */
+            color: #333; /* 글자색을 진한 회색으로 - 읽기 편하게 해줘요 */
+            line-height: 1.6; /* 줄 간격을 넓게 해서 읽기 쉽게 - 글이 답답하지 않게 해줘요 */
+        }
+
+        /* CEO 섹션 전체 컨테이너 - 모든 내용을 담는 큰 상자예요 */
+        .ceo-container {
+            max-width: 1200px; /* 최대 너비 제한 - 너무 넓어지지 않게 해줘요 */
+            margin: 0 auto; /* 가운데 정렬 - 화면 중앙에 배치해줘요 */
+            padding: 60px 20px; /* 위아래 60px, 좌우 20px 여백 - 내용이 가장자리에 붙지 않게 해줘요 */
+            opacity: 0; /* 처음에는 안 보이게 - 애니메이션을 위해서예요 */
+            transform: translateY(30px); /* 살짝 아래에서 시작 - 부드럽게 나타나게 해줘요 */
+            animation: fadeInUp 1s ease-out forwards; /* 부드럽게 나타나는 애니메이션 - 예쁘게 나타나게 해줘요 */
+        }
+
+        /* 페이드인 애니메이션 정의 - 부드럽게 나타나는 효과를 만들어줘요 */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1; /* 완전히 보이게 - 투명에서 보이게 바뀌어요 */
+                transform: translateY(0); /* 원래 위치로 - 아래에서 위로 올라와요 */
+            }
+        }
+
+        /* 메인 타이틀 스타일 - 큰 제목을 예쁘게 꾸며줘요 */
+        .ceo-title {
+            font-size: 2.5rem; /* 큰 글씨 크기 - 눈에 잘 띄게 크게 해줘요 */
+            font-weight: 700; /* 굵은 글씨 - 강조해서 보여줘요 */
+            color: #000; /* 검은색 - 선명하게 보이게 해줘요 */
+            text-align: center; /* 가운데 정렬 - 화면 중앙에 놓아줘요 */
+            margin-bottom: 20px; /* 아래쪽 여백 - 다음 내용과 간격을 둬요 */
+        }
+
+        /* 서브 타이틀 스타일 - 부제목을 예쁘게 꾸며줘요 */
+        .ceo-subtitle {
+            font-size: 1.5rem; /* 중간 글씨 크기 - 제목보다는 작지만 눈에 띄게 해줘요 */
+            font-weight: 500; /* 중간 굵기 - 너무 굵지도 얇지도 않게 해줘요 */
+            color: #000; /* 검은색 - 깔끔하게 보이게 해줘요 */
+            text-align: center; /* 가운데 정렬 - 제목과 맞춰서 정렬해줘요 */
+            margin-bottom: 50px; /* 아래쪽 여백 - 다음 내용과 충분한 간격을 둬요 */
+            font-style: italic; /* 기울임체로 인용구 느낌 - 특별한 느낌을 줘요 */
+        }
+
+        /* CEO 콘텐츠 영역 (좌우 배치) - 사진과 글을 나란히 배치하는 공간이에요 */
+        .ceo-content {
+            display: flex; /* 가로로 나란히 배치 - 사진과 글을 옆으로 나란히 놓아줘요 */
+            align-items: flex-start; /* 위쪽 정렬 - 사진과 글의 위쪽을 맞춰줘요 */
+            gap: 40px; /* 좌우 간격 - 사진과 글 사이에 공간을 만들어줘요 */
+            margin-bottom: 50px; /* 아래쪽 여백 - 다음 내용과 간격을 둬요 */
+        }
+
+        /* 왼쪽 이미지 영역 - 사진이 들어가는 곳이에요 */
+        .ceo-image {
+            flex: 0 0 300px; /* 고정 너비 300px - 사진 크기를 일정하게 유지해줘요 */
+        }
+
+        .ceo-image img {
+            width: 100%; /* 이미지를 영역에 맞게 - 상자 크기에 딱 맞춰줘요 */
+            height: auto; /* 비율 유지 - 사진이 찌그러지지 않게 해줘요 */
+            border-radius: 15px; /* 모서리 둥글게 - 부드럽고 예쁘게 보이게 해줘요 */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15); /* 그림자 효과 - 입체감을 줘서 더 예뻐 보이게 해줘요 */
+            transition: transform 0.3s ease; /* 부드러운 변화 - 마우스 올릴 때 부드럽게 바뀌게 해줘요 */
+        }
+
+        .ceo-image img:hover {
+            transform: scale(1.05); /* 마우스 올리면 살짝 커지기 - 재미있는 효과를 줘요 */
+        }
+
+        /* 오른쪽 텍스트 영역 - 글이 들어가는 곳이에요 */
+        .ceo-text {
+            flex: 1; /* 남은 공간 모두 사용 - 사진을 제외한 나머지 공간을 다 사용해줘요 */
+        }
+
+        /* CEO 인사말 텍스트 - 사장님이 하시는 말씀이에요 */
+        .ceo-desc {
+            font-size: 1rem; /* 적당한 글씨 크기 - 읽기 편한 크기로 해줘요 */
+            color: #000; /* 검은색 - 선명하게 읽을 수 있게 해줘요 */
+            line-height: 1.8; /* 줄 간격 넓게 - 글이 읽기 편하게 해줘요 */
+            margin-bottom: 20px; /* 아래쪽 여백 - 다음 내용과 간격을 둬요 */
+        }
+
+        /* 미리보기 텍스트 (처음에 보이는 일부) - 4줄만 먼저 보여주는 부분이에요 */
+        .preview-text {
+            display: block; /* 보이게 하기 - 처음에는 이 부분만 보여줘요 */
+        }
+
+        /* 더보기 버튼 스타일 - 클릭하면 전체 내용을 볼 수 있는 버튼이에요 */
+        .more-btn {
+            background-color: #052f5d; /* 진한 파란색 배경 - 눈에 잘 띄게 파란색으로 해줘요 */
+            color: white; /* 흰색 글씨 - 파란 배경에 흰 글씨로 깔끔하게 해줘요 */
+            border: none; /* 테두리 없애기 - 깔끔하게 보이게 해줘요 */
+            padding: 12px 30px; /* 안쪽 여백 - 버튼이 너무 작지 않게 해줘요 */
+            border-radius: 25px; /* 둥근 모서리 - 부드럽고 예쁘게 보이게 해줘요 */
+            font-size: 1rem; /* 글씨 크기 - 읽기 좋은 크기로 해줘요 */
+            font-weight: 500; /* 중간 굵기 - 잘 보이게 조금 굵게 해줘요 */
+            cursor: pointer; /* 마우스 포인터 모양 - 클릭할 수 있다는 걸 알려줘요 */
+            transition: all 0.3s ease; /* 부드러운 변화 - 마우스 올릴 때 부드럽게 바뀌게 해줘요 */
+            box-shadow: 0 2px 10px rgba(5, 47, 93, 0.3); /* 그림자 - 입체감을 줘서 더 예뻐 보이게 해줘요 */
+            font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 넥슨폰트 사용 */
+        }
+
+        .more-btn:hover {
+            background-color: #041f42; /* 마우스 올리면 더 진한 파란색 - 반응하는 걸 보여줘요 */
+            transform: translateY(-2px); /* 살짝 위로 올라가기 - 살아있는 느낌을 줘요 */
+            box-shadow: 0 4px 15px rgba(5, 47, 93, 0.4); /* 그림자 진하게 - 더 입체적으로 보이게 해줘요 */
+        }
+
+        /* 모달 배경 (전체 화면을 덮는 어두운 배경) - 팝업창의 뒷배경이에요 */
+        .modal-overlay {
+            position: fixed; /* 화면에 고정 - 스크롤해도 그 자리에 있게 해줘요 */
+            top: 0; /* 맨 위부터 - 화면 맨 위에서 시작해요 */
+            left: 0; /* 맨 왼쪽부터 - 화면 맨 왼쪽에서 시작해요 */
+            width: 100%; /* 전체 너비 - 화면 가로 전체를 덮어줘요 */
+            height: 100%; /* 전체 높이 - 화면 세로 전체를 덮어줘요 */
+            background-color: rgba(0, 0, 0, 0.7); /* 반투명 검은색 - 뒤가 살짝 보이는 어두운 배경이에요 */
+            display: none; /* 처음에는 안 보이게 - 더보기 버튼 누르기 전까지는 숨겨져 있어요 */
+            justify-content: center; /* 가로 가운데 정렬 - 팝업을 화면 가운데 놓아줘요 */
+            align-items: center; /* 세로 가운데 정렬 - 팝업을 화면 세로 가운데 놓아줘요 */
+            z-index: 1000; /* 다른 요소들보다 위에 - 모든 것 위에 보이게 해줘요 */
+            opacity: 0; /* 투명하게 시작 - 부드럽게 나타나게 하기 위해서예요 */
+            transition: opacity 0.3s ease; /* 부드러운 나타남/사라짐 - 갑작스럽지 않게 부드럽게 해줘요 */
+        }
+
+        .modal-overlay.show {
+            display: flex; /* 보이게 하기 - 더보기 버튼 누르면 나타나요 */
+            opacity: 1; /* 완전히 보이게 - 투명에서 완전히 보이게 바뀌어요 */
+        }
+
+        /* 모달 창 - 실제 팝업 내용이 들어가는 상자예요 */
+        .modal-content {
+            background-color: white; /* 흰색 배경 - 깔끔하게 보이게 해줘요 */
+            border-radius: 15px; /* 둥근 모서리 - 부드럽고 예쁘게 보이게 해줘요 */
+            padding: 40px; /* 안쪽 여백 - 내용이 가장자리에 붙지 않게 해줘요 */
+            max-width: 800px; /* 최대 너비 - 너무 넓어지지 않게 제한해줘요 */
+            max-height: 80vh; /* 최대 높이 (화면의 80%) - 화면을 넘지 않게 해줘요 */
+            overflow-y: auto; /* 내용이 많으면 스크롤 - 내용이 길면 스크롤로 볼 수 있게 해줘요 */
+            position: relative; /* 닫기 버튼 위치 기준 - 닫기 버튼을 정확한 위치에 놓기 위해서예요 */
+            transform: scale(0.7); /* 작게 시작 - 부드럽게 커지면서 나타나게 해줘요 */
+            transition: transform 0.3s ease; /* 부드러운 크기 변화 - 갑작스럽지 않게 부드럽게 해줘요 */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* 그림자 - 입체감을 줘서 더 예뻐 보이게 해줘요 */
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: scale(1); /* 원래 크기로 - 작은 크기에서 원래 크기로 커져요 */
+        }
+
+        /* 모달 닫기 버튼 (X 표시) - 팝업을 닫는 X 버튼이에요 */
+        .close-btn {
+            position: absolute; /* 절대 위치 - 정확한 위치에 고정해서 놓아줘요 */
+            top: 15px; /* 위에서 15px - 팝업 맨 위쪽에 놓아줘요 */
+            right: 20px; /* 오른쪽에서 20px - 팝업 오른쪽 위에 놓아줘요 */
+            background: none; /* 배경 없애기 - 깔끔하게 X 표시만 보이게 해줘요 */
+            border: none; /* 테두리 없애기 - 깔끔하게 보이게 해줘요 */
+            font-size: 2rem; /* 큰 글씨 - X 표시가 잘 보이게 크게 해줘요 */
+            color: #666; /* 회색 - 너무 진하지 않게 적당한 색으로 해줘요 */
+            cursor: pointer; /* 마우스 포인터 모양 - 클릭할 수 있다는 걸 알려줘요 */
+            transition: color 0.3s ease; /* 부드러운 색상 변화 - 마우스 올릴 때 부드럽게 바뀌게 해줘요 */
+        }
+
+        .close-btn:hover {
+            color: #000; /* 마우스 올리면 검은색 - 반응하는 걸 보여줘요 */
+        }
+
+        /* 모달 내용 제목 - 팝업 안의 제목이에요 */
+        .modal-title {
+            font-size: 2rem; /* 큰 글씨 - 제목답게 크게 해줘요 */
+            font-weight: 700; /* 굵은 글씨 - 제목답게 굵게 해줘요 */
+            color: #000; /* 검은색 - 선명하게 보이게 해줘요 */
+            margin-bottom: 20px; /* 아래쪽 여백 - 제목과 내용 사이에 공간을 만들어줘요 */
+            text-align: center; /* 가운데 정렬 - 제목을 중앙에 놓아줘요 */
+        }
+
+        /* 모달 내용 텍스트 - 팝업 안의 긴 글이에요 */
+        .modal-text {
+            font-size: 1.1rem; /* 조금 큰 글씨 - 읽기 편한 크기로 해줘요 */
+            line-height: 1.8; /* 줄 간격 넓게 - 글이 읽기 편하게 해줘요 */
+            color: #333; /* 진한 회색 - 읽기 편한 색으로 해줘요 */
+            margin-bottom: 30px; /* 아래쪽 여백 - 다음 내용과 간격을 둬요 */
+        }
+
+        /* 서명 스타일 - 사장님 이름과 회사명이 들어가는 곳이에요 */
+        .signature {
+            text-align: right; /* 오른쪽 정렬 - 서명은 보통 오른쪽에 써요 */
+            margin-top: 30px; /* 위쪽 여백 - 본문과 서명 사이에 공간을 만들어줘요 */
+            font-weight: 500; /* 중간 굵기 - 조금 굵게 해서 눈에 띄게 해줘요 */
+            color: #052f5d; /* 진한 파란색 - 회사 색깔로 특별하게 해줘요 */
+        }
+
+        /* 모달 하단 닫기 버튼 - 팝업 아래쪽의 닫기 버튼이에요 */
+        .modal-close-btn {
+            background-color: #052f5d; /* 진한 파란색 - 회사 색깔로 눈에 띄게 해줘요 */
+            color: white; /* 흰색 글씨 - 파란 배경에 흰 글씨로 깔끔하게 해줘요 */
+            border: none; /* 테두리 없애기 - 깔끔하게 보이게 해줘요 */
+            padding: 12px 30px; /* 안쪽 여백 - 버튼이 너무 작지 않게 해줘요 */
+            border-radius: 25px; /* 둥근 모서리 - 부드럽고 예쁘게 보이게 해줘요 */
+            font-size: 1rem; /* 글씨 크기 - 읽기 좋은 크기로 해줘요 */
+            cursor: pointer; /* 마우스 포인터 모양 - 클릭할 수 있다는 걸 알려줘요 */
+            display: block; /* 블록 요소로 - 혼자서 한 줄을 차지하게 해줘요 */
+            margin: 0 auto; /* 가운데 정렬 - 버튼을 중앙에 놓아줘요 */
+            transition: background-color 0.3s ease; /* 부드러운 색상 변화 - 마우스 올릴 때 부드럽게 바뀌게 해줘요 */
+            font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 넥슨폰트 사용 */
+        }
+
+        .modal-close-btn:hover {
+            background-color: #041f42; /* 마우스 올리면 더 진한 파란색 - 반응하는 걸 보여줘요 */
+        }
+
+        /* 상담 연락처 섹션 - 맨 아래 연락처가 들어가는 곳이에요 */
+        .contact-section {
+            background-color: #052f5d; /* 진한 파란색 배경 - 눈에 잘 띄게 회사 색깔로 해줘요 */
+            color: white; /* 흰색 글씨 - 파란 배경에 흰 글씨로 깔끔하게 해줘요 */
+            text-align: center; /* 가운데 정렬 - 연락처를 중앙에 놓아줘요 */
+            padding: 30px 20px; /* 안쪽 여백 - 내용이 가장자리에 붙지 않게 해줘요 */
+            margin-top: 40px; /* 위쪽 여백 - 위쪽 내용과 간격을 둬요 */
+            border-radius: 15px; /* 둥근 모서리 - 부드럽고 예쁘게 보이게 해줘요 */
+            box-shadow: 0 4px 15px rgba(5, 47, 93, 0.3); /* 그림자 - 입체감을 줘서 더 예뻐 보이게 해줘요 */
+        }
+
+        .contact-section h3 {
+            font-size: 1.5rem; /* 큰 글씨 크기 - 중요한 메시지라서 크게 해줘요 */
+            font-weight: 600; /* 굵은 글씨 - 강조해서 보여줘요 */
+            margin-bottom: 15px; /* 아래쪽 여백 - 제목과 연락처 사이에 공간을 만들어줘요 */
+        }
+
+        .contact-section .phone {
+            font-size: 1.3rem; /* 중간 큰 글씨 - 전화번호가 잘 보이게 해줘요 */
+            font-weight: 500; /* 중간 굵기 - 적당히 굵게 해서 눈에 띄게 해줘요 */
+            color: #ffd700; /* 금색 - 전화번호를 특별하게 강조해줘요 */
+        }
+
+        /* 태블릿 화면 (768px 이하) - 화면이 작을 때 적용되는 스타일이에요 */
+        @media (max-width: 768px) {
+            .ceo-container {
+                padding: 40px 15px; /* 여백 줄이기 - 작은 화면에서는 여백을 줄여줘요 */
+            }
+
+            .ceo-title {
+                font-size: 2rem; /* 글씨 크기 줄이기 - 작은 화면에 맞게 줄여줘요 */
+            }
+
+            .ceo-subtitle {
+                font-size: 1.2rem; /* 글씨 크기 줄이기 - 작은 화면에 맞게 줄여줘요 */
+            }
+
+            .ceo-content {
+                flex-direction: column; /* 세로로 배치 - 작은 화면에서는 사진과 글을 위아래로 배치해줘요 */
+                gap: 30px; /* 간격 줄이기 - 공간을 절약해줘요 */
+            }
+
+            .ceo-image {
+                flex: none; /* 고정 크기 해제 - 유연하게 크기 조절하게 해줘요 */
+                align-self: center; /* 가운데 정렬 - 사진을 중앙에 놓아줘요 */
+                max-width: 300px; /* 최대 너비 제한 - 너무 커지지 않게 해줘요 */
+            }
+
+            .modal-content {
+                margin: 20px; /* 모달 여백 - 화면 가장자리와 간격을 둬요 */
+                padding: 30px; /* 안쪽 여백 줄이기 - 공간을 절약해줘요 */
+                max-height: 90vh; /* 높이 늘리기 - 작은 화면에서 더 많이 보이게 해줘요 */
+            }
+
+            .modal-title {
+                font-size: 1.5rem; /* 글씨 크기 줄이기 - 작은 화면에 맞게 줄여줘요 */
+            }
+
+            .modal-text {
+                font-size: 1rem; /* 글씨 크기 줄이기 - 작은 화면에 맞게 줄여줘요 */
+            }
+
+            .contact-section h3 {
+                font-size: 1.3rem; /* 글씨 크기 줄이기 - 작은 화면에 맞게 줄여줘요 */
+            }
+
+            .contact-section .phone {
+                font-size: 1.1rem; /* 글씨 크기 줄이기 - 작은 화면에 맞게 줄여줘요 */
+            }
+        }
+
+        /* 모바일 화면 (480px 이하) - 아주 작은 화면용 스타일이에요 */
+        @media (max-width: 480px) {
+            .ceo-container {
+                padding: 30px 10px; /* 여백 더 줄이기 - 아주 작은 화면에서는 여백을 더 줄여줘요 */
+            }
+
+            .ceo-title {
+                font-size: 1.8rem; /* 글씨 크기 더 줄이기 - 아주 작은 화면에 맞게 더 줄여줘요 */
+            }
+
+            .ceo-subtitle {
+                font-size: 1.1rem; /* 글씨 크기 더 줄이기 - 아주 작은 화면에 맞게 더 줄여줘요 */
+            }
+
+            .ceo-desc {
+                font-size: 0.9rem; /* 글씨 크기 줄이기 - 작은 화면에서 읽기 편하게 해줘요 */
+            }
+
+            .more-btn {
+                padding: 10px 25px; /* 버튼 크기 줄이기 - 작은 화면에 맞게 줄여줘요 */
+                font-size: 0.9rem; /* 글씨 크기 줄이기 - 작은 화면에 맞게 줄여줘요 */
+            }
+
+            .modal-content {
+                margin: 10px; /* 모달 여백 줄이기 - 아주 작은 화면에서는 여백을 최소화해줘요 */
+                padding: 20px; /* 안쪽 여백 더 줄이기 - 공간을 최대한 활용해줘요 */
+            }
+
+            .contact-section {
+                padding: 20px 15px; /* 여백 줄이기 - 작은 화면에 맞게 줄여줘요 */
+            }
+
+            .contact-section h3 {
+                font-size: 1.1rem; /* 글씨 크기 줄이기 - 작은 화면에 맞게 줄여줘요 */
+            }
+
+            .contact-section .phone {
+                font-size: 1rem; /* 글씨 크기 줄이기 - 작은 화면에 맞게 줄여줘요 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CEO 섹션 전체 컨테이너 - 모든 내용이 들어가는 큰 상자예요 -->
+    <div class="ceo-container">
+        <!-- 메인 타이틀 - 페이지의 큰 제목이에요 -->
+        <h1 class="ceo-title">CEO, 인사말</h1>
+        
+        <!-- 서브 타이틀 - 사장님의 중요한 메시지예요 -->
+        <h2 class="ceo-subtitle">"소상공인과 자영업 사장님들의 성공, 그것이 저의 사명입니다."</h2>
+        
+        <!-- CEO 콘텐츠 (좌우 배치) - 사진과 글을 나란히 배치한 공간이에요 -->
+        <div class="ceo-content">
+            <!-- 왼쪽 이미지 영역 - 사장님 사진이 들어가는 곳이에요 -->
+            <div class="ceo-image">
+                <img src="images/man3.png" alt="중간계 AI 스튜디오 대표 신병철" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display:none; padding:20px; background:#f5f5f5; border-radius:15px; text-align:center; color:#666;">
+                    이미지를 불러올 수 없습니다<br>
+                    (images/man2.jpg)
+                </div>
+            </div>
+            
+            <!-- 오른쪽 텍스트 영역 - 사장님 인사말이 들어가는 곳이에요 -->
+            <div class="ceo-text">
+                <!-- CEO 인사말 텍스트 - 사장님이 하시는 말씀이에요 -->
+                <p class="ceo-desc preview-text">
+                    안녕하십니까? 저는 지난 35년간 비즈니스와 마케팅 한길을 걸으며, 
+                    CJ, 배달의민족, 러쉬, 여기어때, 야나두, 일동제약, 커피에 반하다, 
+                    단꿈아이 등 수많은 기업과 브랜드에서 경영 자문과 마케팅 전략을
+                    맡아 왔습니다. 특히, 스타트업과 소상공인 사장님들의 빠르고 
+                    정확한 의사결정, 현장에 맞는 전략 실행을 지원하며, 현장에서 길어 
+                    올린 실전 경험을 쌓아왔습니다.
+                </p>
+                
+                <!-- 더보기 버튼 - 클릭하면 전체 내용을 볼 수 있는 버튼이에요 -->
+                <button class="more-btn" onclick="openModal()">더보기</button>
+            </div>
+        </div>
+
+        <!-- 상담 연락처 섹션 - 고객이 연락할 수 있는 정보가 들어가는 곳이에요 -->
+        <div class="contact-section">
+            <h3>상담이 필요하시면, 중간계 고객센터로 연락주십시오.</h3>
+            <div class="phone">02-6952-9454, 9455</div>
+        </div>
+    </div>
+
+    <!-- 모달 창 (전체 내용 보기) - 더보기 버튼을 누르면 나타나는 팝업창이에요 -->
+    <div class="modal-overlay" id="ceoModal" onclick="closeModalOnBackground(event)">
+        <div class="modal-content">
+            <!-- 모달 닫기 버튼 (X 표시) - 팝업을 닫는 X 버튼이에요 -->
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            
+            <!-- 모달 제목 - 팝업 안의 제목이에요 -->
+            <h2 class="modal-title">CEO 인사말</h2>
+            
+            <!-- 모달 내용 텍스트 - 사장님의 전체 인사말이 들어가는 곳이에요 -->
+            <div class="modal-text">
+                <p>안녕하십니까? 저는 지난 35년간 비즈니스와 마케팅 한길을 걸으며, CJ, 배달의민족, 러쉬, 여기어때, 야나두, 일동제약, 커피에 반하다, 단꿈아이 등 수많은 기업과 브랜드에서 경영 자문과 마케팅 전략을 맡아 왔습니다.</p>
+                
+                <p>특히, 스타트업과 소상공인 사장님들의 빠르고 정확한 의사결정, 현장에 맞는 전략 실행을 지원하며, 현장에서 길어 올린 실전 경험을 쌓아왔습니다.</p>
+                
+                <p>이제 AI 시대를 맞아, 그동안의 경험과 통찰을 바탕으로 '중간계 AI 스튜디오'라는 새로운 서비스를 시작합니다. 브랜드 기획, Naming, 브랜드 스토리, 슬로건 부터 상세페이지, 쇼츠·릴스, 웹사이트, 그리고 인공지능 기반 챗봇에 이르기까지, 변화하는 시대에 꼭 필요한 실행 솔루션을 제공합니다.</p>
+                
+                <p>AI 기술과 현장 경험이 결합된 실용적이고 감각적인 지원, 그것이 중간계 AI 스튜디오가 드리는 약속입니다. 소상공인과 자영업 사장님들의 더 큰 도전과 성공을 함께하겠습니다.</p>
+                
+                <p>감사합니다.</p>
+                
+                <!-- 서명 - 사장님 이름과 회사명이 들어가는 곳이에요 -->
+                <div class="signature">
+                    <br>중간계 AI 스튜디오<br>
+                    <strong>대표 신병철</strong>
+                </div>
+            </div>
+            
+            <!-- 모달 하단 닫기 버튼 - 팝업 아래쪽의 닫기 버튼이에요 -->
+            <button class="modal-close-btn" onclick="closeModal()">닫기</button>
+        </div>
+    </div>
+
+    <script>
+        // 모달 열기 함수 - 더보기 버튼을 누르면 실행되는 기능이에요
+        function openModal() {
+            const modal = document.getElementById('ceoModal'); // 팝업창 찾기 - 모달이라는 팝업창을 찾아요
+            modal.classList.add('show'); // 'show' 클래스 추가해서 보이게 하기 - 팝업을 보이게 만들어요
+            document.body.style.overflow = 'hidden'; // 페이지 스크롤 막기 - 팝업이 열려있을 때는 뒤쪽 페이지가 스크롤되지 않게 해줘요
+            console.log('CEO 인사말 모달이 열렸습니다'); // 개발자 도구에 메시지 출력 - 개발자가 확인할 수 있게 해줘요
+        }
+
+        // 모달 닫기 함수 - 팝업을 닫는 기능이에요
+        function closeModal() {
+            const modal = document.getElementById('ceoModal'); // 팝업창 찾기 - 모달이라는 팝업창을 찾아요
+            modal.classList.remove('show'); // 'show' 클래스 제거해서 안 보이게 하기 - 팝업을 숨겨줘요
+            document.body.style.overflow = 'auto'; // 페이지 스크롤 다시 허용 - 팝업이 닫히면 다시 페이지를 스크롤할 수 있게 해줘요
+            console.log('CEO 인사말 모달이 닫혔습니다'); // 개발자 도구에 메시지 출력 - 개발자가 확인할 수 있게 해줘요
+        }
+
+        // 배경 클릭으로 모달 닫기 - 팝업 바깥쪽을 클릭하면 닫히게 하는 기능이에요
+        function closeModalOnBackground(event) {
+            // 클릭한 곳이 팝업 배경인지 확인 - 팝업 내용이 아닌 바깥쪽 어두운 부분을 클릭했는지 확인해요
+            if (event.target === event.currentTarget) {
+                closeModal(); // 팝업 닫기 - 바깥쪽을 클릭했으면 팝업을 닫아줘요
+            }
+        }
+
+        // ESC 키로 모달 닫기 - 키보드의 ESC 키를 누르면 팝업이 닫히게 하는 기능이에요
+        document.addEventListener('keydown', function(event) {
+            // ESC 키가 눌렸는지 확인 - 키보드에서 ESC 키를 눌렀는지 확인해요
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('ceoModal'); // 팝업창 찾기 - 모달이라는 팝업창을 찾아요
+                // 팝업이 열려있으면 닫기 - 팝업이 보이는 상태일 때만 닫아줘요
+                if (modal.classList.contains('show')) {
+                    closeModal(); // 팝업 닫기 - ESC 키로 팝업을 닫아줘요
+                }
+            }
+        });
+
+        // 페이지 로딩 완료 시 실행 - 웹페이지가 다 준비되면 실행되는 기능이에요
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('CEO 인사말 페이지가 로딩되었습니다'); // 개발자 도구에 메시지 출력 - 페이지가 준비되었다고 알려줘요
+            
+            // 이미지 로딩 에러 처리 - 사진이 안 보이면 대신 텍스트 보여주는 기능이에요
+            const images = document.querySelectorAll('img'); // 모든 사진 찾기 - 페이지에 있는 모든 사진을 찾아요
+            images.forEach(function(img) {
+                img.addEventListener('error', function() {
+                    console.log('이미지 로딩 실패:', img.src); // 어떤 사진이 안 되는지 알려주기 - 개발자가 확인할 수 있게 해줘요
+                });
+            });
+        });
+    </script>
+</body>
+</html>

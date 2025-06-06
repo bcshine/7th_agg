@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중간계AI 스튜디오</title>
+    <!-- 넥슨폰트 웹폰트 불러오기 - 예쁜 넥슨 글꼴을 사용해요 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff" />
+    
+    <style>
+        /* 넥슨폰트 정의 - 웹에서 사용할 수 있는 예쁜 글꼴이에요 */
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 초기화 스타일 - 모든 요소의 기본 여백과 패딩을 없애요 (깔끔하게 시작하기 위해서예요) */
+        * {
+            margin: 0; /* 바깥쪽 여백을 0으로 해서 딱 붙게 만들어요 */
+            padding: 0; /* 안쪽 여백을 0으로 해서 내용이 가장자리에 붙게 해요 */
+            box-sizing: border-box; /* 크기 계산을 쉽게 하기 위해 테두리까지 포함해서 계산해요 */
+        }
+
+        /* 전체 페이지 스타일 - 웹사이트 전체의 기본 모양을 정해요 */
+        body {
+            font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 넥슨폰트를 사용해서 예쁜 글꼴로 보여줘요 */
+            background-color: white; /* 배경색을 흰색으로 설정해서 깔끔하게 보이게 해요 */
+        }
+
+        /* 헤더 전체 스타일 - 맨 위에 있는 메뉴 부분이에요 */
+        .header {
+            background-color: white; /* 헤더 배경색을 흰색으로 해서 깔끔하게 보이게 해요 */
+            padding: 15px 20px; /* 헤더 안쪽 여백을 설정해서 내용이 가장자리에 붙지 않게 해요 */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 헤더 아래쪽에 연한 그림자를 만들어서 입체감을 줘요 */
+            position: sticky; /* 스크롤해도 헤더가 위에 고정되도록 해요 - 항상 메뉴를 볼 수 있게 해줘요 */
+            top: 0; /* 맨 위에 고정해요 */
+            z-index: 1000; /* 다른 요소들보다 위에 보이도록 해서 메뉴가 가려지지 않게 해요 */
+        }
+
+        /* 헤더 내용물을 담는 컨테이너 - 헤더 안의 모든 내용을 예쁘게 정렬하는 상자예요 */
+        .header-container {
+            display: flex; /* 가로로 나란히 배치하기 위해 flex를 사용해요 - 로고, 메뉴, 버튼을 한 줄에 놓아줘요 */
+            align-items: center; /* 세로 가운데 정렬해서 모든 요소가 같은 높이에 오게 해요 */
+            justify-content: space-between; /* 양쪽 끝과 가운데로 배치해서 공간을 예쁘게 나눠줘요 */
+            max-width: 1200px; /* 최대 너비를 제한해서 너무 넓어지지 않게 해요 */
+            margin: 0 auto; /* 가운데 정렬해서 화면 중앙에 놓아줘요 */
+            gap: 10px; /* 요소들 사이 간격을 10px로 설정해서 너무 붙지 않게 해요 */
+        }
+
+        /* 로고와 브랜드명을 묶는 왼쪽 영역 - 로고와 회사 이름을 함께 보여주는 곳이에요 */
+        .header-left {
+            display: flex; /* 로고와 브랜드명을 가로로 나란히 배치해요 */
+            align-items: center; /* 세로 가운데 정렬해서 로고와 글자가 같은 높이에 오게 해요 */
+            gap: 15px; /* 로고와 브랜드명 사이 간격을 15px로 해서 적당히 떨어뜨려줘요 */
+        }
+
+        /* 로고 이미지 스타일 - 회사 로고를 예쁘게 보여주는 설정이에요 */
+        .logo {
+            height: 40px; /* 로고 높이를 40px로 설정해요 */
+            width: auto; /* 비율에 맞게 너비를 자동 조정해서 로고가 찌그러지지 않게 해요 */
+        }
+
+        /* 브랜드명 스타일 - 회사 이름을 눈에 띄게 보여주는 설정이에요 */
+        .brand-name {
+            font-size: 20px; /* 글자 크기를 20px로 해서 잘 보이게 해요 */
+            font-weight: 700; /* 글자 굵기를 굵게 해서 강조해줘요 */
+            color: #333; /* 글자 색상을 진한 회색으로 해서 선명하게 보이게 해요 */
+        }
+
+        /* 가운데 네비게이션 메뉴 - 웹사이트의 주요 페이지로 이동할 수 있는 메뉴들이에요 */
+        .nav-menu {
+            display: flex; /* 메뉴들을 가로로 나란히 배치해요 */
+            align-items: center; /* 세로 가운데 정렬해서 모든 메뉴가 같은 높이에 오게 해요 */
+            gap: 30px; /* 메뉴들 사이 간격을 30px로 해서 적당한 간격을 만들어줘요 */
+            list-style: none; /* 리스트 점(•)을 제거해서 깔끔하게 보이게 해요 */
+        }
+
+        /* 각 메뉴 항목 스타일 - 개별 메뉴 버튼의 모양을 정해요 */
+        .nav-item {
+            font-size: 16px; /* 글자 크기를 16px로 해서 읽기 편하게 해요 */
+            font-weight: 500; /* 글자 굵기를 중간으로 해서 너무 굵지도 얇지도 않게 해요 */
+            color: #333; /* 글자 색상을 진한 회색으로 해서 잘 보이게 해요 */
+            text-decoration: none; /* 밑줄을 제거해서 깔끔하게 보이게 해요 */
+            padding: 8px 12px; /* 클릭 영역을 넓히기 위한 패딩을 줘서 누르기 쉽게 해요 */
+            border-radius: 5px; /* 모서리를 5px만큼 둥글게 해서 부드러워 보이게 해요 */
+            transition: all 0.3s ease; /* 마우스 올렸을 때 부드럽게 변하는 효과를 줘요 */
+            font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 넥슨폰트 사용해요 */
+        }
+
+        /* 메뉴에 마우스 올렸을 때 효과 - 메뉴에 마우스를 올리면 색이 바뀌어서 반응하는 걸 보여줘요 */
+        .nav-item:hover {
+            background-color: #f5f5f5; /* 배경색을 연한 회색으로 바꿔서 마우스가 올라간 걸 알려줘요 */
+            color: #007bff; /* 글자색을 파란색으로 바꿔서 선택된 느낌을 줘요 */
+        }
+
+        /* 로그인 버튼 스타일 - 로그인 페이지로 가는 버튼의 모양을 정해요 */
+        .login-btn {
+            background-color: white; /* 흰색 배경으로 해서 깔끔하게 보이게 해요 */
+            color: black; /* 검은색 글자로 해서 흰 배경에 잘 보이게 해요 */
+            border: 2px solid black; /* 검은색 테두리를 2px 두께로 만들어서 버튼처럼 보이게 해요 */
+            border-radius: 30px; /* 둥근 모서리를 30px로 해서 동그란 버튼 모양을 만들어요 */
+            padding: 10px 20px; /* 버튼 안쪽 여백을 줘서 글자가 가장자리에 붙지 않게 해요 */
+            font-size: 14px; /* 글자 크기를 14px로 해서 적당한 크기로 보이게 해요 */
+            font-weight: 500; /* 글자 굵기를 중간으로 해서 잘 보이게 해요 */
+            cursor: pointer; /* 마우스 포인터를 손가락 모양으로 바꿔서 클릭할 수 있다는 걸 알려줘요 */
+            text-decoration: none; /* 밑줄을 제거해서 깔끔하게 보이게 해요 */
+            transition: all 0.3s ease; /* 마우스 올렸을 때 부드럽게 변하는 효과를 줘요 */
+            font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 넥슨폰트 사용해요 */
+        }
+
+        /* 로그인 버튼에 마우스 올렸을 때 효과 - 버튼에 마우스를 올리면 색이 반대로 바뀌어요 */
+        .login-btn:hover {
+            background-color: black; /* 배경을 검은색으로 바꿔서 눈에 띄게 해요 */
+            color: white; /* 글자를 흰색으로 바꿔서 검은 배경에 잘 보이게 해요 */
+        }
+
+        /* 모바일 메뉴 버튼 (처음에는 숨김) - 작은 화면에서 보이는 햄버거 메뉴 버튼이에요 */
+        .mobile-menu-btn {
+            display: none; /* 기본적으로 숨겨놔요 - 큰 화면에서는 필요 없거든요 */
+            flex-direction: column; /* 세로로 배치해서 햄버거 모양을 만들어요 */
+            cursor: pointer; /* 클릭할 수 있다는 걸 알려주기 위해 손가락 모양으로 바꿔요 */
+            padding: 5px; /* 클릭 영역을 확대해서 누르기 쉽게 해요 */
+        }
+
+        /* 햄버거 메뉴의 선들 - 햄버거 메뉴 버튼을 만드는 3개의 선이에요 */
+        .mobile-menu-btn span {
+            width: 25px; /* 선의 너비를 25px로 해요 */
+            height: 3px; /* 선의 높이를 3px로 해서 얇은 선을 만들어요 */
+            background-color: #333; /* 선의 색상을 진한 회색으로 해서 잘 보이게 해요 */
+            margin: 3px 0; /* 선들 사이 간격을 3px로 해서 햄버거 모양을 만들어요 */
+            transition: 0.3s; /* 부드러운 애니메이션 효과를 줘요 */
+        }
+
+        /* 태블릿 크기에서의 반응형 디자인 (768px 이하) - 화면이 작아지면 적용되는 스타일이에요 */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* 네비게이션 메뉴를 숨겨서 화면이 복잡하지 않게 해요 */
+            }
+            
+            .mobile-menu-btn {
+                display: flex; /* 모바일 메뉴 버튼을 보이게 해서 메뉴에 접근할 수 있게 해요 */
+            }
+            
+            .brand-name {
+                font-size: 18px; /* 브랜드명 글자 크기를 줄여서 작은 화면에 맞게 해요 */
+            }
+            
+            .header-container {
+                gap: 15px; /* 간격을 조정해서 작은 화면에서도 예쁘게 보이게 해요 */
+            }
+        }
+
+        /* 모바일 크기에서의 반응형 디자인 (480px 이하) - 아주 작은 화면용 스타일이에요 */
+        @media (max-width: 480px) {
+            .header {
+                padding: 10px 15px; /* 헤더 패딩을 줄여서 공간을 절약해요 */
+            }
+            
+            .logo {
+                height: 35px; /* 로고 크기를 줄여서 작은 화면에 맞게 해요 */
+            }
+            
+            .brand-name {
+                font-size: 16px; /* 브랜드명을 더 작게 해서 공간을 절약해요 */
+            }
+            
+            .login-btn {
+                padding: 8px 16px; /* 로그인 버튼 크기를 줄여서 작은 화면에 맞게 해요 */
+                font-size: 12px; /* 글자 크기도 줄여서 균형을 맞춰요 */
+            }
+        }
+
+        /* 모바일 드롭다운 메뉴 스타일 - 햄버거 버튼을 누르면 나타나는 메뉴예요 */
+        .mobile-nav {
+            display: none; /* 기본적으로 숨겨놔요 - 버튼을 누르기 전까지는 보이지 않아요 */
+            position: absolute; /* 절대 위치로 설정해서 헤더 아래에 정확히 위치하게 해요 */
+            top: 100%; /* 헤더 바로 아래에 붙게 해요 */
+            left: 0; /* 왼쪽 끝부터 시작해요 */
+            width: 100%; /* 전체 너비를 차지해서 화면을 다 덮어요 */
+            background-color: white; /* 흰색 배경으로 해서 깔끔하게 보이게 해요 */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* 그림자 효과로 입체감을 줘요 */
+            z-index: 999; /* 다른 요소보다 위에 나타나게 해서 가려지지 않게 해요 */
+        }
+
+        /* 모바일 메뉴가 열렸을 때 - 햄버거 버튼을 누르면 적용되는 스타일이에요 */
+        .mobile-nav.active {
+            display: block; /* 메뉴를 보이게 해서 사용할 수 있게 해요 */
+        }
+
+        /* 모바일 메뉴 항목들 - 모바일에서 보이는 각각의 메뉴 버튼이에요 */
+        .mobile-nav-item {
+            display: block; /* 세로로 배치해서 하나씩 차례대로 보이게 해요 */
+            padding: 15px 20px; /* 클릭하기 쉽게 패딩을 넉넉히 줘요 */
+            color: #333; /* 글자 색상을 진한 회색으로 해서 잘 보이게 해요 */
+            text-decoration: none; /* 밑줄을 제거해서 깔끔하게 보이게 해요 */
+            border-bottom: 1px solid #eee; /* 구분선을 그어서 메뉴들을 구분해요 */
+            font-size: 16px; /* 글자 크기를 16px로 해서 읽기 편하게 해요 */
+            font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 넥슨폰트 사용해요 */
+        }
+
+        /* 모바일 메뉴 항목에 마우스 올렸을 때 - 터치하면 색이 바뀌어서 반응하는 걸 보여줘요 */
+        .mobile-nav-item:hover {
+            background-color: #f5f5f5; /* 배경색을 연한 회색으로 바꿔서 선택된 느낌을 줘요 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 영역 시작 - 웹사이트 맨 위에 있는 메뉴 부분이에요 -->
+    <header class="header">
+        <!-- 헤더 내용물을 담는 컨테이너 - 로고, 메뉴, 버튼을 예쁘게 정렬하는 상자예요 -->
+        <div class="header-container">
+            <!-- 왼쪽 영역: 로고와 브랜드명 - 회사 정보를 보여주는 왼쪽 부분이에요 -->
+            <div class="header-left">
+                <!-- 로고 이미지 - 회사를 나타내는 그림이에요 -->
+                <img src="images/logo1.png" alt="중간계AI 스튜디오 로고" class="logo">
+                <!-- 브랜드명 - 회사 이름이에요 -->
+                <div class="brand-name">중간계AI 스튜디오</div>
+            </div>
+
+            <!-- 가운데 영역: 네비게이션 메뉴 (데스크톱용) - 큰 화면에서 보이는 메뉴들이에요 -->
+            <nav class="nav-menu">
+                <a href="#products" class="nav-item">제품</a>
+                <a href="#reviews" class="nav-item">고객후기</a>
+                <a href="#greeting" class="nav-item">인사말</a>
+            </nav>
+
+            <!-- 오른쪽 영역: 로그인 버튼과 모바일 메뉴 버튼 - 오른쪽에 있는 버튼들이에요 -->
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <!-- 로그인 버튼 - 로그인 페이지로 가는 버튼이에요 -->
+                <a href="#login" class="login-btn">로그인</a>
+                
+                <!-- 모바일 메뉴 버튼 (햄버거 메뉴) - 작은 화면에서 메뉴를 여는 버튼이에요 -->
+                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모바일용 드롭다운 메뉴 - 햄버거 버튼을 누르면 나타나는 메뉴예요 -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="#products" class="mobile-nav-item" onclick="closeMobileMenu()">제품</a>
+            <a href="#reviews" class="mobile-nav-item" onclick="closeMobileMenu()">고객후기</a>
+            <a href="#greeting" class="mobile-nav-item" onclick="closeMobileMenu()">인사말</a>
+        </nav>
+    </header>
+
+    <!-- 페이지 내용 예시 - 실제 웹사이트 내용이 들어갈 곳이에요 -->
+    <main style="padding: 50px 20px; text-align: center;">
+        <h1>중간계AI 스튜디오에 오신 것을 환영합니다!</h1>
+        <p>반응형 헤더가 완성되었습니다. 화면 크기를 조절해보세요.</p>
+    </main>
+
+    <script>
+        // 모바일 메뉴를 열고 닫는 함수 - 햄버거 버튼을 누르면 실행되는 기능이에요
+        function toggleMobileMenu() {
+            // 모바일 네비게이션 요소를 찾아요 - HTML에서 모바일 메뉴를 찾는 거예요
+            const mobileNav = document.getElementById('mobileNav');
+            
+            // 현재 메뉴가 열려있는지 확인하고 반대로 바꿔요 - 열려있으면 닫고, 닫혀있으면 열어요
+            if (mobileNav.classList.contains('active')) {
+                mobileNav.classList.remove('active'); // 메뉴 닫기 - 'active' 클래스를 제거해서 메뉴를 숨겨요
+            } else {
+                mobileNav.classList.add('active'); // 메뉴 열기 - 'active' 클래스를 추가해서 메뉴를 보여줘요
+            }
+        }
+
+        // 모바일 메뉴를 닫는 함수 - 메뉴 항목을 선택하면 실행되는 기능이에요
+        function closeMobileMenu() {
+            // 모바일 네비게이션 요소를 찾아요 - HTML에서 모바일 메뉴를 찾는 거예요
+            const mobileNav = document.getElementById('mobileNav');
+            // 메뉴를 닫아요 - 'active' 클래스를 제거해서 메뉴를 숨겨요
+            mobileNav.classList.remove('active');
+        }
+
+        // 화면 크기가 바뀔 때 모바일 메뉴를 자동으로 닫는 함수 - 화면이 커지면 메뉴가 자동으로 닫혀요
+        window.addEventListener('resize', function() {
+            // 화면이 768px보다 커지면 모바일 메뉴를 닫아요 - 큰 화면에서는 일반 메뉴를 사용하거든요
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // 메뉴 외부를 클릭했을 때 모바일 메뉴를 닫는 함수 - 메뉴 바깥쪽을 터치하면 메뉴가 닫혀요
+        document.addEventListener('click', function(event) {
+            const mobileNav = document.getElementById('mobileNav'); // 모바일 메뉴 찾기
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn'); // 햄버거 버튼 찾기
+            
+            // 클릭한 곳이 모바일 메뉴나 메뉴 버튼이 아니면 메뉴를 닫아요 - 다른 곳을 터치하면 메뉴가 사라져요
+            if (!mobileNav.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>

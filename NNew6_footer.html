@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>푸터 - 중간계 AI 스튜디오</title>
+    <!-- 넥슨폰트 웹폰트 불러오기 - 읽기 쉬운 예쁜 글씨체예요 -->
+    <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.3/NEXON Lv1 Gothic OTF.woff2" rel="stylesheet">
+    <!-- Font Awesome 아이콘 라이브러리 - 예쁜 아이콘들을 사용할 수 있어요 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* 전체 페이지 기본 설정 - 웹페이지 전체의 기본 모양을 정하는 곳이에요 */
+        * {
+            margin: 0; /* 바깥쪽 여백을 0으로 만들어요 */
+            padding: 0; /* 안쪽 여백을 0으로 만들어요 */
+            box-sizing: border-box; /* 크기 계산을 쉽게 해줘요 */
+        }
+
+        /* 전체 페이지 배경과 폰트 설정 - 페이지 전체 모양이에요 */
+        body {
+            font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 넥슨폰트를 사용해요 */
+            background-color: white; /* 배경색을 흰색으로 해요 */
+            color: #333; /* 글자색을 진한 회색으로 해요 */
+            line-height: 1.6; /* 줄 간격을 넓게 해서 읽기 쉽게 해요 */
+            min-height: 100vh; /* 최소 높이를 화면 전체로 해요 */
+            display: flex; /* 세로로 배치해요 */
+            flex-direction: column; /* 세로 방향으로 배치해요 */
+        }
+
+        /* 메인 콘텐츠 영역 - 푸터를 아래로 밀어내기 위한 공간이에요 */
+        .main-content {
+            flex: 1; /* 남은 공간을 모두 차지해요 */
+            padding: 60px 20px; /* 위아래 60px, 좌우 20px 여백을 줘요 */
+            text-align: center; /* 가운데 정렬해요 */
+        }
+
+        .main-content h1 {
+            font-size: 2.5rem; /* 글씨를 크게 해요 */
+            color: #052f5d; /* 브랜드 색깔로 해요 */
+            margin-bottom: 20px; /* 아래쪽에 20px 여백을 줘요 */
+        }
+
+        .main-content p {
+            font-size: 1.2rem; /* 글씨를 중간 크기로 해요 */
+            color: #666; /* 회색으로 해요 */
+        }
+
+        /* 푸터 전체 컨테이너 - 푸터 전체를 감싸는 큰 상자예요 */
+        .footer {
+            background-color: #052f5d; /* 진한 파란색 배경으로 해요 */
+            color: white; /* 글자색을 흰색으로 해요 */
+            padding: 40px 20px; /* 위아래 40px, 좌우 20px 여백을 줘요 */
+            margin-top: auto; /* 자동으로 아래쪽에 배치해요 */
+        }
+
+        /* 푸터 내용 컨테이너 - 푸터 안의 내용들을 정리해요 */
+        .footer-content {
+            max-width: 1200px; /* 최대 너비를 1200px로 제한해요 */
+            margin: 0 auto; /* 가운데 정렬해요 */
+        }
+
+        /* 상단 링크 영역 - 이용약관과 개인정보처리방침 링크가 있어요 */
+        .footer-links {
+            text-align: center; /* 가운데 정렬해요 */
+            margin-bottom: 30px; /* 아래쪽에 30px 여백을 줘요 */
+            padding-bottom: 20px; /* 아래쪽 안쪽 여백을 20px 줘요 */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* 아래쪽에 연한 선을 그어요 */
+        }
+
+        .footer-links a {
+            color: white; /* 링크 색깔을 흰색으로 해요 */
+            text-decoration: none; /* 밑줄을 없애요 */
+            font-weight: 500; /* 글씨를 조금 굵게 해요 */
+            transition: color 0.3s ease; /* 색깔 변화를 부드럽게 해요 */
+        }
+
+        .footer-links a:hover {
+            color: #87ceeb; /* 마우스를 올리면 연한 파란색으로 변해요 */
+        }
+
+        .footer-links .separator {
+            margin: 0 10px; /* 좌우에 10px 여백을 줘요 */
+            color: #87ceeb; /* 구분선 색깔을 연한 파란색으로 해요 */
+        }
+
+        /* 메인 정보 영역 - 회사 정보와 SNS 버튼이 있어요 */
+        .main-info {
+            display: flex; /* 가로로 나란히 배치해요 */
+            justify-content: space-between; /* 양쪽 끝으로 정렬해요 */
+            align-items: flex-start; /* 위쪽으로 정렬해요 */
+            flex-wrap: wrap; /* 화면이 작으면 줄바꿈해요 */
+            gap: 30px; /* 요소들 사이에 30px 간격을 줘요 */
+            margin-bottom: 30px; /* 아래쪽에 30px 여백을 줘요 */
+        }
+
+        /* 회사 정보 영역 - 회사의 자세한 정보가 있어요 */
+        .company-info {
+            flex: 1; /* 남은 공간을 차지해요 */
+            display: flex; /* 세로로 배치해요 */
+            flex-direction: column; /* 세로 방향으로 배치해요 */
+            gap: 8px; /* 줄 사이에 8px 간격을 줘요 */
+        }
+
+        .company-name {
+            font-size: 1.5rem; /* 글씨를 크게 해요 */
+            font-weight: 700; /* 글씨를 굵게 해요 */
+            margin-bottom: 10px; /* 아래쪽에 10px 여백을 줘요 */
+            color: #87ceeb; /* 연한 파란색으로 해요 */
+        }
+
+        .info-item {
+            display: flex; /* 가로로 나란히 배치해요 */
+            align-items: center; /* 세로 가운데 정렬해요 */
+            gap: 10px; /* 아이콘과 텍스트 사이에 10px 간격을 줘요 */
+            font-size: 0.95rem; /* 글씨 크기를 조금 작게 해요 */
+            color: #e6e6e6; /* 연한 회색으로 해요 */
+        }
+
+        .info-item i {
+            width: 16px; /* 아이콘 너비를 16px로 고정해요 */
+            text-align: center; /* 아이콘을 가운데 정렬해요 */
+            color: #87ceeb; /* 아이콘 색깔을 연한 파란색으로 해요 */
+            font-size: 0.9rem; /* 아이콘 크기를 조금 작게 해요 */
+        }
+
+        /* SNS 연결 버튼 영역 - 소셜미디어 버튼들이 있어요 */
+        .social-section {
+            display: flex; /* 세로로 배치해요 */
+            flex-direction: column; /* 세로 방향으로 배치해요 */
+            align-items: center; /* 가운데 정렬해요 */
+            gap: 15px; /* 요소들 사이에 15px 간격을 줘요 */
+        }
+
+        .social-title {
+            font-size: 1.1rem; /* 글씨 크기를 정해요 */
+            font-weight: 500; /* 글씨를 조금 굵게 해요 */
+            color: #87ceeb; /* 연한 파란색으로 해요 */
+        }
+
+        .social-links {
+            display: flex; /* 가로로 나란히 배치해요 */
+            gap: 15px; /* 버튼들 사이에 15px 간격을 줘요 */
+            align-items: center; /* 세로 가운데 정렬해요 */
+        }
+
+        /* SNS 버튼 스타일 - 각각의 소셜미디어 버튼 모양이에요 */
+        .social-btn {
+            display: inline-flex; /* 인라인 플렉스로 배치해요 */
+            align-items: center; /* 세로 가운데 정렬해요 */
+            justify-content: center; /* 가로 가운데 정렬해요 */
+            width: 45px; /* 너비를 45px로 해요 */
+            height: 45px; /* 높이를 45px로 해요 */
+            border-radius: 50%; /* 원형으로 만들어요 */
+            text-decoration: none; /* 밑줄을 없애요 */
+            color: white; /* 글자색을 흰색으로 해요 */
+            font-size: 1.2rem; /* 아이콘 크기를 정해요 */
+            transition: all 0.3s ease; /* 모든 변화를 부드럽게 해요 */
+            border: 2px solid transparent; /* 투명한 테두리를 만들어요 */
+        }
+
+        /* 인스타그램 버튼 - 인스타그램 색깔로 꾸며요 */
+        .social-btn.instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); /* 인스타그램 무지개 색깔 */
+        }
+
+        .social-btn.instagram:hover {
+            transform: translateY(-3px) scale(1.1); /* 마우스를 올리면 위로 올라가고 커져요 */
+            box-shadow: 0 8px 25px rgba(240, 148, 51, 0.4); /* 예쁜 그림자를 만들어요 */
+        }
+
+        /* 페이스북 버튼 - 페이스북 색깔로 꾸며요 */
+        .social-btn.facebook {
+            background-color: #1877f2; /* 페이스북 파란색 */
+        }
+
+        .social-btn.facebook:hover {
+            transform: translateY(-3px) scale(1.1); /* 마우스를 올리면 위로 올라가고 커져요 */
+            box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4); /* 예쁜 그림자를 만들어요 */
+        }
+
+        /* 유튜브 버튼 - 유튜브 색깔로 꾸며요 */
+        .social-btn.youtube {
+            background-color: #ff0000; /* 유튜브 빨간색 */
+        }
+
+        .social-btn.youtube:hover {
+            transform: translateY(-3px) scale(1.1); /* 마우스를 올리면 위로 올라가고 커져요 */
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4); /* 예쁜 그림자를 만들어요 */
+        }
+
+        /* 블로그 버튼 - 네이버 블로그 색깔로 꾸며요 */
+        .social-btn.blog {
+            background-color: #03c75a; /* 네이버 초록색 */
+        }
+
+        .social-btn.blog:hover {
+            transform: translateY(-3px) scale(1.1); /* 마우스를 올리면 위로 올라가고 커져요 */
+            box-shadow: 0 8px 25px rgba(3, 199, 90, 0.4); /* 예쁜 그림자를 만들어요 */
+        }
+
+        /* 저작권 정보 - 회사 저작권 안내가 있어요 */
+        .copyright {
+            text-align: center; /* 가운데 정렬해요 */
+            padding-top: 20px; /* 위쪽에 20px 안쪽 여백을 줘요 */
+            border-top: 1px solid rgba(255, 255, 255, 0.2); /* 위쪽에 연한 선을 그어요 */
+            font-size: 0.9rem; /* 글씨를 조금 작게 해요 */
+            color: #87ceeb; /* 연한 파란색으로 해요 */
+        }
+
+        /* 태블릿 화면 - 화면이 중간 크기일 때 모양을 바꿔요 (768px 이하) */
+        @media (max-width: 768px) {
+            .main-content h1 {
+                font-size: 2rem; /* 제목 글씨를 작게 해요 */
+            }
+
+            .main-content p {
+                font-size: 1rem; /* 글씨를 작게 해요 */
+            }
+
+            .footer {
+                padding: 30px 15px; /* 여백을 줄여요 */
+            }
+
+            .main-info {
+                flex-direction: column; /* 세로로 배치해요 */
+                text-align: center; /* 가운데 정렬해요 */
+                gap: 25px; /* 간격을 줄여요 */
+            }
+
+            .company-info {
+                align-items: center; /* 가운데 정렬해요 */
+            }
+
+            .info-item {
+                justify-content: center; /* 가운데 정렬해요 */
+                text-align: center; /* 글자를 가운데 정렬해요 */
+            }
+
+            .social-links {
+                justify-content: center; /* 가운데 정렬해요 */
+                flex-wrap: wrap; /* 줄바꿈을 허용해요 */
+            }
+        }
+
+        /* 모바일 화면 - 화면이 작을 때 모양을 바꿔요 (480px 이하) */
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 40px 15px; /* 여백을 더 줄여요 */
+            }
+
+            .main-content h1 {
+                font-size: 1.8rem; /* 제목 글씨를 더 작게 해요 */
+            }
+
+            .company-name {
+                font-size: 1.3rem; /* 회사명 글씨를 작게 해요 */
+            }
+
+            .info-item {
+                font-size: 0.85rem; /* 정보 글씨를 작게 해요 */
+                flex-direction: column; /* 세로로 배치해요 */
+                text-align: center; /* 가운데 정렬해요 */
+                gap: 5px; /* 간격을 줄여요 */
+            }
+
+            .social-btn {
+                width: 40px; /* 버튼을 작게 해요 */
+                height: 40px; /* 버튼을 작게 해요 */
+                font-size: 1rem; /* 아이콘을 작게 해요 */
+            }
+
+            .social-links {
+                gap: 10px; /* 간격을 줄여요 */
+            }
+        }
+
+        /* 푸터 애니메이션 효과 - 푸터가 부드럽게 나타나게 해요 */
+        .footer {
+            opacity: 0; /* 처음에는 안 보이게 해요 */
+            transform: translateY(50px); /* 아래에서 시작해요 */
+            animation: fadeInUp 1s ease-out 0.5s forwards; /* 0.5초 후에 나타나요 */
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1; /* 완전히 보이게 해요 */
+                transform: translateY(0); /* 원래 위치로 올려요 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 메인 콘텐츠 영역 - 푸터 테스트용 공간이에요 -->
+    <div class="main-content">
+        <h1>중간계 AI 스튜디오</h1>
+        <p>소상공인과 자영업 사장님들의 성공 파트너</p>
+        <p style="margin-top: 20px; color: #999;">푸터가 페이지 하단에 고정되어 있습니다.</p>
+    </div>
+
+    <!-- 푸터 섹션 - 회사 정보와 연락처가 있는 곳이에요 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- 상단 링크 영역 - 중요한 약관 링크들이 있어요 -->
+            <div class="footer-links">
+                <a href="#" onclick="showTerms()">이용약관</a>
+                <span class="separator">|</span>
+                <a href="#" onclick="showPrivacy()">개인정보처리방침</a>
+            </div>
+
+            <!-- 메인 정보 영역 - 회사 정보와 SNS가 있어요 -->
+            <div class="main-info">
+                <!-- 회사 정보 영역 - 회사의 자세한 정보예요 -->
+                <div class="company-info">
+                    <!-- 회사명 -->
+                    <div class="company-name">주식회사 중간계캠퍼스</div>
+                    
+                    <!-- 연락처 정보들 -->
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <span>고객센터 02-6952-9454, 9455</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-fax"></i>
+                        <span>FAX 02-6952-9553</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <span>운영시간 오전10시~ 오후 6시(주말, 공휴일 제외)</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>주소 서울특별시 서초구 논현로 173, 5층</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-building"></i>
+                        <span>사업자등록번호 211-88-80844</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>통신판매업신고 2021-서울서초-3279</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-user-tie"></i>
+                        <span>대표이사 신병철</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>개인정보관리 책임자 전진 midcampus31@gmail.com</span>
+                    </div>
+                </div>
+
+                <!-- SNS 연결 버튼 영역 - 소셜미디어 버튼들이에요 -->
+                <div class="social-section">
+                    <div class="social-title">Follow Us</div>
+                    
+                    <div class="social-links">
+                        <!-- 인스타그램 버튼 -->
+                        <a href="https://www.instagram.com" target="_blank" class="social-btn instagram" title="인스타그램에서 만나요">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        
+                        <!-- 페이스북 버튼 -->
+                        <a href="https://www.facebook.com" target="_blank" class="social-btn facebook" title="페이스북에서 만나요">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        
+                        <!-- 유튜브 버튼 -->
+                        <a href="https://www.youtube.com" target="_blank" class="social-btn youtube" title="유튜브에서 만나요">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        
+                        <!-- 블로그 버튼 -->
+                        <a href="https://blog.naver.com" target="_blank" class="social-btn blog" title="블로그에서 만나요">
+                            <i class="fas fa-blog"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 저작권 정보 - 회사 저작권 표시예요 -->
+            <div class="copyright">
+                <p>COPYRIGHT 중간계캠퍼스. ALL RIGHTS RESERVED</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 페이지 로딩 완료 시 실행 - 웹페이지가 다 준비되면 실행되는 함수예요
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('푸터 페이지가 로딩되었습니다!'); // 개발자 도구에 메시지를 보여줘요
+            
+            // SNS 버튼 클릭 이벤트 - SNS 버튼을 클릭했을 때 특별한 효과가 나와요
+            const socialButtons = document.querySelectorAll('.social-btn'); // 모든 SNS 버튼을 찾아요
+            
+            socialButtons.forEach(function(button) {
+                button.addEventListener('click', function(event) {
+                    // 클릭 효과 추가해요
+                    button.style.transform = 'scale(0.95)'; // 살짝 작아져요
+                    
+                    setTimeout(function() {
+                        button.style.transform = ''; // 원래 크기로 돌아와요
+                    }, 150);
+                    
+                    console.log('SNS 버튼 클릭:', button.title); // 어떤 SNS 버튼을 클릭했는지 알려줘요
+                });
+            });
+
+            // 연락처 정보 클릭 이벤트 - 전화번호나 이메일을 클릭하면 특별한 기능이 작동해요
+            const infoItems = document.querySelectorAll('.info-item'); // 모든 정보 항목을 찾아요
+            
+            infoItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    const text = item.querySelector('span').textContent; // 글자 내용을 가져와요
+                    
+                    // 전화번호인 경우 - 고객센터 번호예요
+                    if (text.includes('02-6952')) {
+                        if (confirm('고객센터에 전화를 걸까요?\n' + text)) {
+                            window.location.href = 'tel:02-6952-9454'; // 전화를 걸어요
+                        }
+                    }
+                    // 이메일인 경우 - 개인정보 담당자 이메일이에요
+                    else if (text.includes('midcampus31@gmail.com')) {
+                        if (confirm('이메일을 보낼까요?\nmidcampus31@gmail.com')) {
+                            window.location.href = 'mailto:midcampus31@gmail.com'; // 이메일을 보내요
+                        }
+                    }
+                    // 주소인 경우 - 회사 위치예요
+                    else if (text.includes('서울특별시 서초구')) {
+                        if (confirm('지도에서 위치를 확인할까요?\n' + text)) {
+                            window.open('https://map.naver.com/v5/search/' + encodeURIComponent('서울특별시 서초구 논현로 173'), '_blank'); // 네이버 지도에서 찾아봐요
+                        }
+                    }
+                });
+                
+                // 마우스를 올리면 손가락 모양으로 바뀌어요
+                item.style.cursor = 'pointer';
+                
+                // 마우스를 올렸을 때 색깔이 변해요
+                item.addEventListener('mouseenter', function() {
+                    item.style.color = '#87ceeb'; // 연한 파란색으로 변해요
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    item.style.color = '#e6e6e6'; // 원래 색깔로 돌아와요
+                });
+            });
+        });
+
+        // 이용약관 보기 함수 - 이용약관을 보여주는 함수예요
+        function showTerms() {
+            alert('이용약관 페이지로 이동합니다.\n(실제 서비스에서는 이용약관 페이지가 열려요)');
+        }
+
+        // 개인정보처리방침 보기 함수 - 개인정보처리방침을 보여주는 함수예요
+        function showPrivacy() {
+            alert('개인정보처리방침 페이지로 이동합니다.\n(실제 서비스에서는 개인정보처리방침 페이지가 열려요)');
+        }
+    </script>
+</body>
+</html>

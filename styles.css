@@ -1,0 +1,1417 @@
+/* 넥슨폰트 정의 */
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 초기화 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 전체 페이지 스타일 */
+body {
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+    background-color: white;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 부드러운 스크롤 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* =================================== */
+/* 헤더 스타일 */
+/* =================================== */
+
+.header {
+    background-color: white;
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+.brand-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-item {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+}
+
+.nav-item:hover {
+    background-color: #f5f5f5;
+    color: #007bff;
+}
+
+.login-btn {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+}
+
+.login-btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+.mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+.mobile-nav.active {
+    display: block;
+}
+
+.mobile-nav-item {
+    display: block;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+}
+
+.mobile-nav-item:hover {
+    background-color: #f5f5f5;
+}
+
+/* =================================== */
+/* 히어로 섹션 스타일 */
+/* =================================== */
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.hero-slide:nth-child(1) {
+    background-image: url('images/hero01.jpg');
+}
+
+.hero-slide:nth-child(2) {
+    background-image: url('images/hero02.jpg');
+}
+
+.hero-slide:nth-child(3) {
+    background-image: url('images/hero03.jpg');
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+    z-index: 2;
+}
+
+.hero-brand {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    line-height: 1.2;
+}
+
+.hero-slogan {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    line-height: 1.3;
+}
+
+.hero-desc {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    line-height: 1.5;
+}
+
+.hero-button {
+    display: inline-block;
+    background-color: #052f5d;
+    color: white;
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+    text-shadow: none;
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+}
+
+.hero-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+}
+
+.hero-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    color: #333;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 3;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+}
+
+.hero-arrow.left {
+    left: 30px;
+}
+
+.hero-arrow.right {
+    right: 30px;
+}
+
+.hero-arrow:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.hero-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.hero-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-indicator.active {
+    background-color: white;
+    transform: scale(1.2);
+}
+
+/* =================================== */
+/* 제품 섹션 스타일 */
+/* =================================== */
+
+.product-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+.shop-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.product-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: black;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.product-image {
+    width: calc(100% - 6px);
+    height: 200px;
+    object-fit: cover;
+    margin: 3px;
+}
+
+.product-content {
+    padding: 20px;
+    height: auto;
+    min-height: 200px;
+}
+
+.product-content h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.product-content p {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: black;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.product-desc-preview {
+    display: block;
+}
+
+.product-desc-full {
+    display: none;
+}
+
+.toggle-btn {
+    background-color: #052f5d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+}
+
+.toggle-btn:hover {
+    background-color: #041f42;
+    transform: translateY(-1px);
+}
+
+.purchase-section {
+    text-align: right;
+    margin-top: 30px;
+}
+
+.purchase-btn {
+    display: inline-block;
+    background-color: #052f5d;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 20%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(5,47,93,0.3);
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+}
+
+.purchase-btn:hover {
+    background-color: #041f42;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(5,47,93,0.4);
+}
+
+/* =================================== */
+/* 고객후기 섹션 스타일 */
+/* =================================== */
+
+.review-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+}
+
+.review-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.review-subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #666;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.review-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.review-stars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.star {
+    color: #ffd700;
+    font-size: 1.5rem;
+    margin: 0 2px;
+}
+
+.review-text {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #555;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 80px;
+}
+
+.reviewer-info {
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.reviewer-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.reviewer-business {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #888;
+}
+
+/* =================================== */
+/* CEO 섹션 스타일 */
+/* =================================== */
+
+.ceo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ceo-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ceo-subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+    margin-bottom: 50px;
+    font-style: italic;
+}
+
+.ceo-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.ceo-image {
+    flex: 0 0 300px;
+}
+
+.ceo-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.ceo-image img:hover {
+    transform: scale(1.05);
+}
+
+.ceo-text {
+    flex: 1;
+}
+
+.ceo-desc {
+    font-size: 1rem;
+    color: #000;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.preview-text {
+    display: block;
+}
+
+.more-btn {
+    background-color: #052f5d;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(5, 47, 93, 0.3);
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+}
+
+.more-btn:hover {
+    background-color: #041f42;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(5, 47, 93, 0.4);
+}
+
+.contact-section {
+    background-color: #052f5d;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(5, 47, 93, 0.3);
+}
+
+.contact-section h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.contact-section .phone {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #ffd700;
+}
+
+/* 모달 스타일 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-overlay.show .modal-content {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.modal-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 30px;
+    font-weight: 500;
+    color: #052f5d;
+}
+
+.modal-close-btn {
+    background-color: #052f5d;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    transition: background-color 0.3s ease;
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+}
+
+.modal-close-btn:hover {
+    background-color: #041f42;
+}
+
+/* =================================== */
+/* 푸터 섹션 스타일 */
+/* =================================== */
+
+.footer {
+    background-color: #052f5d;
+    color: white;
+    padding: 40px 20px;
+    margin-top: auto;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+}
+
+.footer-links a:hover {
+    color: #87ceeb;
+}
+
+.footer-links .separator {
+    margin: 0 10px;
+    color: #87ceeb;
+}
+
+.main-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.company-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.company-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #87ceeb;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #e6e6e6;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.info-item:hover {
+    color: #87ceeb;
+}
+
+.info-item i {
+    width: 16px;
+    text-align: center;
+    color: #87ceeb;
+    font-size: 0.9rem;
+}
+
+.social-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #87ceeb;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.social-btn.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-btn.instagram:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(240, 148, 51, 0.4);
+}
+
+.social-btn.facebook {
+    background-color: #1877f2;
+}
+
+.social-btn.facebook:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
+}
+
+.social-btn.youtube {
+    background-color: #ff0000;
+}
+
+.social-btn.youtube:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+}
+
+.social-btn.blog {
+    background-color: #03c75a;
+}
+
+.social-btn.blog:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(3, 199, 90, 0.4);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    color: #87ceeb;
+}
+
+/* =================================== */
+/* 챗봇 floating 버튼 스타일 */
+/* =================================== */
+
+.chatbot-floating {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1001;
+}
+
+.chatbot-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(12, 4, 66);
+    color: #f9fafb;
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.chatbot-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    background-color: #06faee;
+    color: white;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* =================================== */
+/* 모바일 바로가기 버튼 스타일 */
+/* =================================== */
+
+.mobile-shortcuts {
+    position: fixed;
+    bottom: 110px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.shortcut-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 60px;
+    background-color: rgba(254, 254, 254, 0.9);
+    color: rgb(5, 5, 5);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.shortcut-btn:hover {
+    background-color: #d3d616;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.shortcut-logo {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 2px;
+}
+
+.shortcut-btn span {
+    font-size: 10px;
+    font-weight: 500;
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+}
+
+/* =================================== */
+/* 태블릿 반응형 (768px 이하) */
+/* =================================== */
+
+@media (max-width: 768px) {
+    /* 헤더 */
+    .nav-menu {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .brand-name {
+        font-size: 18px;
+    }
+    
+    .header-container {
+        gap: 15px;
+    }
+
+    /* 히어로 */
+    .hero-brand {
+        font-size: 2.5rem;
+    }
+    
+    .hero-slogan {
+        font-size: 1.5rem;
+    }
+    
+    .hero-desc {
+        font-size: 1rem;
+    }
+    
+    .hero-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .hero-arrow.left {
+        left: 20px;
+    }
+    
+    .hero-arrow.right {
+        right: 20px;
+    }
+
+    /* 제품 */
+    .product-container {
+        padding: 30px 15px;
+    }
+    
+    .shop-image {
+        height: 200px;
+        margin-bottom: 30px;
+    }
+    
+    .product-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .products-grid {
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .product-image {
+        height: 150px;
+    }
+    
+    .product-content {
+        padding: 15px;
+        min-height: 180px;
+    }
+    
+    .product-content h2 {
+        font-size: 1.1rem;
+    }
+    
+    .product-content p {
+        font-size: 0.85rem;
+    }
+
+    /* 리뷰 */
+    .review-container {
+        padding: 30px 15px;
+    }
+    
+    .review-title {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    .review-subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .review-card {
+        padding: 20px;
+    }
+    
+    .review-text {
+        font-size: 0.9rem;
+        min-height: 70px;
+    }
+
+    /* CEO */
+    .ceo-container {
+        padding: 40px 15px;
+    }
+
+    .ceo-title {
+        font-size: 2rem;
+    }
+
+    .ceo-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .ceo-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .ceo-image {
+        flex: none;
+        align-self: center;
+        max-width: 300px;
+    }
+
+    .modal-content {
+        margin: 20px;
+        padding: 30px;
+        max-height: 90vh;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .modal-text {
+        font-size: 1rem;
+    }
+
+    .contact-section h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact-section .phone {
+        font-size: 1.1rem;
+    }
+
+    /* 푸터 */
+    .footer {
+        padding: 30px 15px;
+    }
+
+    .main-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .company-info {
+        align-items: center;
+    }
+
+    .info-item {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* 챗봇과 바로가기 버튼 */
+    .chatbot-floating {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .chatbot-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+
+    .mobile-shortcuts {
+        bottom: 85px;
+        right: 20px;
+    }
+
+    .shortcut-btn {
+        width: 45px;
+        height: 55px;
+    }
+
+    .shortcut-logo {
+        width: 18px;
+        height: 18px;
+    }
+
+    .shortcut-btn span {
+        font-size: 9px;
+    }
+}
+
+/* =================================== */
+/* 모바일 반응형 (480px 이하) */
+/* =================================== */
+
+@media (max-width: 480px) {
+    /* 헤더 */
+    .header {
+        padding: 10px 15px;
+    }
+    
+    .logo {
+        height: 35px;
+    }
+    
+    .brand-name {
+        font-size: 16px;
+    }
+    
+    .login-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    /* 히어로 */
+    .hero-brand {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    .hero-slogan {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .hero-desc {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+    
+    .hero-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    
+    .hero-content {
+        padding: 0 15px;
+    }
+    
+    .hero-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .hero-arrow.left {
+        left: 15px;
+    }
+    
+    .hero-arrow.right {
+        right: 15px;
+    }
+
+    /* 제품 */
+    .products-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        gap: 15px;
+    }
+    
+    .product-title {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+    
+    .shop-image {
+        height: 150px;
+        margin-bottom: 25px;
+    }
+    
+    .product-image {
+        height: 120px;
+    }
+    
+    .product-content {
+        padding: 12px;
+        min-height: auto;
+    }
+    
+    .product-content h2 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+    
+    .product-content p {
+        font-size: 0.8rem;
+    }
+    
+    .purchase-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    
+    .purchase-section {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    /* 리뷰 */
+    .review-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    
+    .review-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+    
+    .reviews-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        gap: 15px;
+    }
+    
+    .review-card {
+        padding: 15px;
+    }
+    
+    .star {
+        font-size: 1.2rem;
+    }
+    
+    .review-text {
+        font-size: 0.85rem;
+        min-height: 60px;
+    }
+    
+    .reviewer-name {
+        font-size: 0.9rem;
+    }
+    
+    .reviewer-business {
+        font-size: 0.8rem;
+    }
+
+    /* CEO */
+    .ceo-container {
+        padding: 30px 10px;
+    }
+
+    .ceo-title {
+        font-size: 1.8rem;
+    }
+
+    .ceo-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .ceo-desc {
+        font-size: 0.9rem;
+    }
+
+    .more-btn {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
+
+    .modal-content {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .contact-section {
+        padding: 20px 15px;
+    }
+
+    .contact-section h3 {
+        font-size: 1.1rem;
+    }
+
+    .contact-section .phone {
+        font-size: 1rem;
+    }
+
+    /* 푸터 */
+    .footer {
+        padding: 20px 10px;
+    }
+
+    .company-name {
+        font-size: 1.3rem;
+    }
+
+    .info-item {
+        font-size: 0.85rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+
+    .social-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+} 

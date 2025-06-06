@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중간계 AI 스튜디오 - 고객 후기</title>
+    <!-- 넥슨폰트 웹폰트 불러오기 - 인터넷에서 폰트를 가져와요 -->
+    <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.3/NEXON Lv1 Gothic OTF.woff2" rel="stylesheet">
+    <style>
+        /* 초기화 스타일 - 모든 요소의 기본 여백과 패딩을 없애요 */
+        * {
+            margin: 0; /* 바깥쪽 여백을 0으로 만들어요 */
+            padding: 0; /* 안쪽 여백을 0으로 만들어요 */
+            box-sizing: border-box; /* 크기 계산을 쉽게 해줘요 */
+        }
+
+        /* 전체 페이지 스타일 - 웹사이트 전체 모양을 정해요 */
+        body {
+            font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 넥슨폰트를 사용해요 */
+            line-height: 1.6; /* 줄 간격을 조금 넓게 해요 */
+            color: #333; /* 글자색을 진한 회색으로 해요 */
+            background-color: #f8f9fa; /* 배경색을 연한 회색으로 해요 */
+        }
+
+        /* 리뷰 섹션 전체 컨테이너 - 후기들을 담는 큰 상자예요 */
+        .review-container {
+            max-width: 1200px; /* 최대 너비를 1200px로 제한해요 */
+            margin: 0 auto; /* 가운데 정렬해요 */
+            padding: 50px 20px; /* 위아래 50px, 좌우 20px 여백을 줘요 */
+        }
+
+        /* 리뷰 섹션 타이틀 - 큰 제목이에요 */
+        .review-title {
+            font-size: 2.5rem; /* 글씨를 크게 해요 */
+            font-weight: 900; /* 글씨를 매우 굵게 해요 */
+            color: #333; /* 글자색을 진한 회색으로 해요 */
+            text-align: center; /* 가운데 정렬해요 */
+            margin-bottom: 20px; /* 아래쪽에 20px 여백을 줘요 */
+        }
+
+        /* 리뷰 섹션 부제목 - 작은 설명 글이에요 */
+        .review-subtitle {
+            font-size: 1.2rem; /* 글씨를 중간 크기로 해요 */
+            font-weight: 400; /* 글씨를 보통 굵기로 해요 */
+            color: #666; /* 글자색을 회색으로 해요 */
+            text-align: center; /* 가운데 정렬해요 */
+            margin-bottom: 50px; /* 아래쪽에 50px 여백을 줘요 */
+        }
+
+        /* 리뷰들을 담는 그리드 컨테이너 - 후기 카드들을 정리해서 보여줘요 */
+        .reviews-grid {
+            display: grid; /* 격자 모양으로 배치해요 */
+            grid-template-columns: repeat(3, 1fr); /* 가로로 3개씩 같은 크기로 배치해요 */
+            grid-template-rows: repeat(2, 1fr); /* 세로로 2줄로 배치해요 */
+            gap: 25px; /* 카드들 사이 간격을 25px로 해요 */
+        }
+
+        /* 각각의 리뷰 카드 - 하나하나의 후기 상자예요 */
+        .review-card {
+            background-color: white; /* 배경을 흰색으로 해요 */
+            border-radius: 15px; /* 모서리를 둥글게 해요 */
+            padding: 25px; /* 안쪽 여백을 25px로 해요 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 그림자를 만들어서 입체감을 줘요 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 움직임을 부드럽게 해줘요 */
+            position: relative; /* 자식 요소들의 위치 기준점이 되어요 */
+        }
+
+        /* 리뷰 카드에 마우스 올렸을 때 - 마우스를 올리면 변해요 */
+        .review-card:hover {
+            transform: translateY(-5px); /* 살짝 위로 올라가요 */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* 그림자를 더 진하게 해요 */
+        }
+
+        /* 별점 영역 - 별 5개를 보여주는 곳이에요 */
+        .review-stars {
+            display: flex; /* 별들을 가로로 나열해요 */
+            justify-content: center; /* 가운데 정렬해요 */
+            margin-bottom: 15px; /* 아래쪽에 15px 여백을 줘요 */
+        }
+
+        /* 각각의 별 - 하나하나의 별 모양이에요 */
+        .star {
+            color: #ffd700; /* 별을 금색으로 칠해요 */
+            font-size: 1.5rem; /* 별 크기를 정해요 */
+            margin: 0 2px; /* 별들 사이에 2px 간격을 줘요 */
+        }
+
+        /* 리뷰 텍스트 - 실제 후기 내용이에요 */
+        .review-text {
+            font-size: 0.95rem; /* 글씨 크기를 정해요 */
+            font-weight: 400; /* 글씨를 보통 굵기로 해요 */
+            color: #555; /* 글자색을 진한 회색으로 해요 */
+            line-height: 1.6; /* 줄 간격을 조금 넓게 해요 */
+            text-align: center; /* 가운데 정렬해요 */
+            margin-bottom: 20px; /* 아래쪽에 20px 여백을 줘요 */
+            min-height: 80px; /* 최소 높이를 80px로 해서 카드 크기를 맞춰요 */
+        }
+
+        /* 리뷰어 정보 영역 - 사장님 정보를 보여주는 곳이에요 */
+        .reviewer-info {
+            text-align: center; /* 가운데 정렬해요 */
+            border-top: 1px solid #eee; /* 위쪽에 연한 선을 그어요 */
+            padding-top: 15px; /* 위쪽에 15px 여백을 줘요 */
+        }
+
+        /* 리뷰어 이름 - 사장님 이름이에요 */
+        .reviewer-name {
+            font-size: 1rem; /* 글씨 크기를 정해요 */
+            font-weight: 600; /* 글씨를 조금 굵게 해요 */
+            color: #333; /* 글자색을 진한 회색으로 해요 */
+            margin-bottom: 5px; /* 아래쪽에 5px 여백을 줘요 */
+        }
+
+        /* 리뷰어 업종 - 사장님이 하시는 일이에요 */
+        .reviewer-business {
+            font-size: 0.85rem; /* 글씨를 조금 작게 해요 */
+            font-weight: 400; /* 글씨를 보통 굵기로 해요 */
+            color: #888; /* 글자색을 연한 회색으로 해요 */
+        }
+
+        /* 태블릿 크기에서의 반응형 디자인 - 화면이 작을 때 모양을 바꿔요 (768px 이하) */
+        @media (max-width: 768px) {
+            .review-container {
+                padding: 30px 15px; /* 여백을 줄여요 */
+            }
+            
+            .review-title {
+                font-size: 2rem; /* 제목 글씨를 작게 해요 */
+                margin-bottom: 15px; /* 여백을 줄여요 */
+            }
+            
+            .review-subtitle {
+                font-size: 1rem; /* 부제목 글씨를 작게 해요 */
+                margin-bottom: 30px; /* 여백을 줄여요 */
+            }
+            
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr); /* 가로로 2개씩 배치해요 */
+                grid-template-rows: repeat(3, 1fr); /* 세로로 3줄로 배치해요 */
+                gap: 20px; /* 간격을 줄여요 */
+            }
+            
+            .review-card {
+                padding: 20px; /* 안쪽 여백을 줄여요 */
+            }
+            
+            .review-text {
+                font-size: 0.9rem; /* 글씨를 작게 해요 */
+                min-height: 70px; /* 최소 높이를 줄여요 */
+            }
+        }
+
+        /* 모바일 크기에서의 반응형 디자인 - 화면이 더 작을 때 모양을 바꿔요 (480px 이하) */
+        @media (max-width: 480px) {
+            .review-container {
+                padding: 20px 10px; /* 여백을 더 줄여요 */
+            }
+            
+            .review-title {
+                font-size: 1.5rem; /* 제목을 더 작게 해요 */
+                margin-bottom: 10px; /* 여백을 더 줄여요 */
+            }
+            
+            .review-subtitle {
+                font-size: 0.9rem; /* 부제목을 더 작게 해요 */
+                margin-bottom: 25px; /* 여백을 더 줄여요 */
+            }
+            
+            .reviews-grid {
+                grid-template-columns: 1fr; /* 가로로 1개씩 세로로 배치해요 */
+                grid-template-rows: repeat(6, 1fr); /* 세로로 6줄로 배치해요 */
+                gap: 15px; /* 간격을 더 줄여요 */
+            }
+            
+            .review-card {
+                padding: 15px; /* 안쪽 여백을 더 줄여요 */
+            }
+            
+            .star {
+                font-size: 1.2rem; /* 별 크기를 줄여요 */
+            }
+            
+            .review-text {
+                font-size: 0.85rem; /* 글씨를 더 작게 해요 */
+                min-height: 60px; /* 최소 높이를 더 줄여요 */
+            }
+            
+            .reviewer-name {
+                font-size: 0.9rem; /* 이름 글씨를 작게 해요 */
+            }
+            
+            .reviewer-business {
+                font-size: 0.8rem; /* 업종 글씨를 작게 해요 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 리뷰 섹션 시작 - 고객 후기를 보여주는 부분이에요 -->
+    <section class="review-container">
+        <!-- 리뷰 섹션 타이틀 - 페이지의 큰 제목이에요 -->
+        <h1 class="review-title">고객 후기</h1>
+        <!-- 리뷰 섹션 부제목 - 제목 아래 설명 글이에요 -->
+        <p class="review-subtitle">중간계 AI 스튜디오와 함께한 자영업, 소상공인 사장님들의 생생한 후기입니다</p>
+        
+        <!-- 리뷰들을 담는 그리드 - 6개의 후기 카드를 정리해서 보여줘요 -->
+        <div class="reviews-grid">
+            <!-- 리뷰 1: 카페 사장님 후기 -->
+            <div class="review-card">
+                <!-- 별점 5개 표시 - 만족도를 별로 보여줘요 -->
+                <div class="review-stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <!-- 리뷰 내용 - 실제 후기 글이에요 -->
+                <p class="review-text">
+                    AI 상세페이지 덕분에 온라인 주문이 3배나 늘었어요!<br>
+                    고객들이 메뉴를 더 쉽게 찾고 주문하게 되었습니다.<br>
+                    매출이 눈에 띄게 증가해서 정말 만족스럽습니다.
+                </p>
+                <!-- 리뷰어 정보 - 후기를 쓴 사장님 정보예요 -->
+                <div class="reviewer-info">
+                    <div class="reviewer-name">김민수 사장님</div>
+                    <div class="reviewer-business">카페 운영</div>
+                </div>
+            </div>
+
+            <!-- 리뷰 2: 치킨집 사장님 후기 -->
+            <div class="review-card">
+                <!-- 별점 5개 표시 -->
+                <div class="review-stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <!-- 리뷰 내용 -->
+                <p class="review-text">
+                    쇼츠 영상 제작 후 젊은 고객들이 많이 늘었어요.<br>
+                    인스타그램과 틱톡에서 우리 가게가 유명해졌습니다.<br>
+                    바이럴 마케팅 효과가 정말 대단해요.
+                </p>
+                <!-- 리뷰어 정보 -->
+                <div class="reviewer-info">
+                    <div class="reviewer-name">박영희 사장님</div>
+                    <div class="reviewer-business">치킨집 운영</div>
+                </div>
+            </div>
+
+            <!-- 리뷰 3: 꽃집 사장님 후기 -->
+            <div class="review-card">
+                <!-- 별점 5개 표시 -->
+                <div class="review-stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <!-- 리뷰 내용 -->
+                <p class="review-text">
+                    반응형 홈페이지로 모바일 고객들이 급증했어요.<br>
+                    꽃 주문이 온라인으로 편리하게 들어옵니다.<br>
+                    특히 기념일 시즌에 주문량이 폭증했습니다.
+                </p>
+                <!-- 리뷰어 정보 -->
+                <div class="reviewer-info">
+                    <div class="reviewer-name">이수진 사장님</div>
+                    <div class="reviewer-business">꽃집 운영</div>
+                </div>
+            </div>
+
+            <!-- 리뷰 4: 미용실 사장님 후기 -->
+            <div class="review-card">
+                <!-- 별점 5개 표시 -->
+                <div class="review-stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <!-- 리뷰 내용 -->
+                <p class="review-text">
+                    AI 챗봇으로 24시간 예약 접수가 가능해졌어요.<br>
+                    새벽에도 고객들이 예약을 잡을 수 있어서 좋습니다.<br>
+                    직원들이 전화 받는 시간이 줄어들어 효율적이에요.
+                </p>
+                <!-- 리뷰어 정보 -->
+                <div class="reviewer-info">
+                    <div class="reviewer-name">최동훈 사장님</div>
+                    <div class="reviewer-business">미용실 운영</div>
+                </div>
+            </div>
+
+            <!-- 리뷰 5: 분식집 사장님 후기 -->
+            <div class="review-card">
+                <!-- 별점 5개 표시 -->
+                <div class="review-stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <!-- 리뷰 내용 -->
+                <p class="review-text">
+                    상세페이지 개선 후 배달 주문이 2배로 늘었어요.<br>
+                    메뉴 사진이 더 맛있어 보이게 나와서 좋습니다.<br>
+                    고객들이 주문하기 전에 망설이는 시간이 줄었어요.
+                </p>
+                <!-- 리뷰어 정보 -->
+                <div class="reviewer-info">
+                    <div class="reviewer-name">정미경 사장님</div>
+                    <div class="reviewer-business">분식집 운영</div>
+                </div>
+            </div>
+
+            <!-- 리뷰 6: 옷가게 사장님 후기 -->
+            <div class="review-card">
+                <!-- 별점 5개 표시 -->
+                <div class="review-stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <!-- 리뷰 내용 -->
+                <p class="review-text">
+                    쇼츠 영상으로 우리 옷가게가 핫플레이스가 되었어요.<br>
+                    젊은 고객들이 영상 보고 직접 찾아옵니다.<br>
+                    온라인 쇼핑몰 매출도 크게 증가했습니다.
+                </p>
+                <!-- 리뷰어 정보 -->
+                <div class="reviewer-info">
+                    <div class="reviewer-name">한지영 사장님</div>
+                    <div class="reviewer-business">의류매장 운영</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 페이지 내용 예시 - 확인용 메시지예요 -->
+    <main style="padding: 50px 20px; text-align: center; background-color: white;">
+        <h2>고객 후기 섹션이 완성되었습니다!</h2>
+        <p>6명의 자영업, 소상공인 사장님들의 생생한 후기를 확인해보세요.</p>
+        <p>화면 크기를 조절하여 반응형 동작을 확인해보세요.</p>
+        <p>모바일에서는 1열로 세로 배치됩니다.</p>
+    </main>
+
+    <script>
+        // 페이지 로딩 시 리뷰 카드들에 순차적으로 애니메이션 효과 추가해요
+        document.addEventListener('DOMContentLoaded', function() {
+            // 모든 리뷰 카드를 찾아요
+            const reviewCards = document.querySelectorAll('.review-card');
+            
+            // 각 리뷰 카드에 순차적으로 나타나는 효과 추가해요
+            reviewCards.forEach(function(card, index) {
+                // 처음에는 투명하게 설정해요
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                // 0.2초씩 지연시켜서 순차적으로 나타나게 해요
+                setTimeout(function() {
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200); // 200ms씩 지연해요
+            });
+        });
+
+        // 리뷰 카드 클릭 시 효과 추가해요
+        document.addEventListener('DOMContentLoaded', function() {
+            // 모든 리뷰 카드를 찾아요
+            const reviewCards = document.querySelectorAll('.review-card');
+            
+            // 각 리뷰 카드에 클릭 이벤트 추가해요
+            reviewCards.forEach(function(card, index) {
+                card.addEventListener('click', function() {
+                    // 리뷰 카드를 클릭했을 때 콘솔에 메시지 출력해요
+                    console.log(`${index + 1}번째 리뷰가 클릭되었습니다!`);
+                    
+                    // 클릭 효과 추가해요 (살짝 확대했다가 원래대로)
+                    card.style.transform = 'scale(1.02)';
+                    setTimeout(function() {
+                        card.style.transform = '';
+                    }, 200);
+                });
+            });
+        });
+
+        // 별점에 마우스 올렸을 때 반짝이는 효과 추가해요
+        document.addEventListener('DOMContentLoaded', function() {
+            // 모든 별점 영역을 찾아요
+            const starContainers = document.querySelectorAll('.review-stars');
+            
+            // 각 별점 영역에 마우스 이벤트 추가해요
+            starContainers.forEach(function(container) {
+                container.addEventListener('mouseenter', function() {
+                    // 별들에 반짝이는 효과 추가해요
+                    const stars = container.querySelectorAll('.star');
+                    stars.forEach(function(star, index) {
+                        setTimeout(function() {
+                            star.style.transform = 'scale(1.2)';
+                            star.style.textShadow = '0 0 10px #ffd700';
+                            setTimeout(function() {
+                                star.style.transform = 'scale(1)';
+                                star.style.textShadow = 'none';
+                            }, 150);
+                        }, index * 50); // 50ms씩 지연해서 순차적으로 반짝이게 해요
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

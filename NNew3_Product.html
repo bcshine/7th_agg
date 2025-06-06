@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중간계 AI 스튜디오 - 제품</title>
+    <!-- 넥슨폰트 웹폰트 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff" />
+    <style>
+        /* 넥슨폰트 정의 - 웹에서 사용할 수 있는 예쁜 글꼴이에요 */
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 초기화 스타일 - 모든 요소의 기본 여백과 패딩을 없애요 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 전체 페이지 스타일 - 페이지 전체에 적용되는 기본 설정이에요 */
+        body {
+            font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 넥슨폰트 사용 */
+            line-height: 1.6; /* 줄 간격 설정 - 글이 읽기 편하게 해줘요 */
+            color: #333; /* 기본 글자색을 진한 회색으로 */
+        }
+
+        /* 제품 섹션 전체 컨테이너 - 모든 제품들을 담는 큰 상자예요 */
+        .product-container {
+            max-width: 1200px; /* 최대 너비 제한 - 너무 넓어지지 않게 해줘요 */
+            margin: 0 auto; /* 가운데 정렬 - 화면 중앙에 배치해줘요 */
+            padding: 50px 20px; /* 위아래 50px, 좌우 20px 여백 */
+        }
+
+        /* 매장 대표 이미지 - 맨 위에 보이는 예쁜 매장 사진이에요 */
+        .shop-image {
+            width: 100%; /* 전체 너비 - 화면 가득 채워요 */
+            height: 300px; /* 높이 고정 - 항상 같은 크기로 보여줘요 */
+            object-fit: cover; /* 이미지 비율 유지하며 영역에 맞춤 */
+            border-radius: 15px; /* 모서리를 둥글게 - 더 예뻐 보여요 */
+            margin-bottom: 40px; /* 아래쪽 여백 - 다음 내용과 간격을 둬요 */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* 그림자 효과 - 입체감을 줘요 */
+        }
+
+        /* 제품 타이틀 스타일 - "중간계 AI 스튜디오 4가지 상품" 제목이에요 */
+        .product-title {
+            font-size: 2.5rem; /* 큰 글씨 크기 - 눈에 잘 띄게 해줘요 */
+            font-weight: 900; /* 매우 굵은 글씨 - 더 강조해줘요 */
+            color: black; /* 검은색 글자 */
+            text-align: center; /* 가운데 정렬 - 화면 중앙에 놓아줘요 */
+            margin-bottom: 50px; /* 아래쪽 여백 */
+        }
+
+        /* 제품들을 담는 그리드 컨테이너 - 4개 제품을 2x2로 배치하는 틀이에요 */
+        .products-grid {
+            display: grid; /* 그리드 레이아웃 사용 - 정렬이 쉬워져요 */
+            grid-template-columns: 1fr 1fr; /* 2열로 배치 (1:1 비율) */
+            grid-template-rows: 1fr 1fr; /* 2행으로 배치 (1:1 비율) */
+            gap: 30px; /* 제품들 사이 간격 - 너무 붙어있지 않게 해줘요 */
+            margin-bottom: 40px; /* 아래쪽 여백 */
+        }
+
+        /* 각각의 제품 카드 - 하나하나의 제품을 담는 예쁜 상자예요 */
+        .product-card {
+            background-color: white; /* 흰색 배경 - 깔끔하게 보여줘요 */
+            border-radius: 15px; /* 모서리를 둥글게 */
+            overflow: hidden; /* 넘치는 부분 숨기기 - 깔끔하게 잘라줘요 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 그림자 효과 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 효과 - 마우스 올릴 때 예쁘게 변해요 */
+        }
+
+        /* 제품 카드에 마우스 올렸을 때 - interactive한 효과를 줘요 */
+        .product-card:hover {
+            transform: translateY(-5px); /* 살짝 위로 올라가는 효과 */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* 더 진한 그림자 */
+        }
+
+        /* 제품 이미지 - 각 제품의 사진이에요 */
+        .product-image {
+            width: 100%; /* 전체 너비 */
+            height: 200px; /* 높이 고정 */
+            object-fit: cover; /* 이미지 비율 유지하며 영역에 맞춤 */
+            margin: 3px; /* 좌우 여백 3px씩 - 가이드에서 요구한 대로 */
+            width: calc(100% - 6px); /* 여백을 고려한 너비 계산 */
+        }
+
+        /* 제품 설명 영역 - 제품 이름과 설명이 들어가는 곳이에요 */
+        .product-content {
+            padding: 20px; /* 안쪽 여백 - 글자가 가장자리에 붙지 않게 해줘요 */
+            height: auto; /* 높이를 자동으로 조정 */
+            min-height: 200px; /* 최소 높이 설정으로 균등한 카드 크기 유지 */
+        }
+
+        /* 제품 제목 스타일 - 각 제품의 이름이에요 */
+        .product-content h2 {
+            font-size: 1.3rem; /* 중간 글씨 크기 */
+            font-weight: 700; /* 굵은 글씨 */
+            color: black; /* 검은색 글자 */
+            margin-bottom: 10px; /* 아래쪽 여백 */
+        }
+
+        /* 제품 설명 스타일 - 제품에 대한 자세한 설명이에요 */
+        .product-content p {
+            font-size: 0.9rem; /* 작은 글씨 크기 */
+            font-weight: 400; /* 보통 굵기 */
+            color: black; /* 검은색 글자 */
+            line-height: 1.6; /* 줄 간격을 넓혀서 가독성 향상 */
+            text-align: left; /* 왼쪽 정렬로 읽기 편하게 */
+        }
+
+        /* 3줄 미리보기 스타일 - 처음에는 3줄만 보여줘요 */
+        .product-desc-preview {
+            display: block; /* 보이게 하기 */
+        }
+
+        /* 전체 설명 스타일 - 더보기를 누르면 전체가 보여요 */
+        .product-desc-full {
+            display: none; /* 처음에는 숨기기 */
+        }
+
+        /* 더보기/접기 버튼 스타일 - 클릭해서 설명을 더 보거나 줄일 수 있는 버튼이에요 */
+        .toggle-btn {
+            background-color: #052f5d; /* 진한 파란색 배경 */
+            color: white; /* 흰색 글자 */
+            border: none; /* 테두리 없애기 */
+            padding: 8px 15px; /* 버튼 안쪽 여백 */
+            font-size: 0.8rem; /* 작은 글씨 크기 */
+            font-weight: 500; /* 중간 굵기 */
+            border-radius: 15px; /* 둥근 모서리 */
+            cursor: pointer; /* 마우스 커서가 손가락 모양으로 바뀌어요 */
+            margin-top: 10px; /* 위쪽 여백 */
+            transition: all 0.3s ease; /* 부드러운 효과 */
+            font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 넥슨폰트 사용 */
+        }
+
+        /* 더보기/접기 버튼에 마우스 올렸을 때 - 버튼이 반응하는 효과예요 */
+        .toggle-btn:hover {
+            background-color: #041f42; /* 더 진한 파란색 */
+            transform: translateY(-1px); /* 살짝 위로 올라가는 효과 */
+        }
+
+        /* 구매하기 버튼 영역 - 버튼을 담는 공간이에요 */
+        .purchase-section {
+            text-align: right; /* 오른쪽 정렬 - 가이드에서 요구한 대로 */
+            margin-top: 30px; /* 위쪽 여백 */
+        }
+
+        /* 구매하기 버튼 스타일 - 클릭해서 구매할 수 있는 버튼이에요 */
+        .purchase-btn {
+            display: inline-block; /* 인라인 블록으로 표시 */
+            background-color: #052f5d; /* 진한 파란색 배경 */
+            color: white; /* 흰색 글자 */
+            padding: 15px 30px; /* 버튼 안쪽 여백 */
+            font-size: 1.1rem; /* 글자 크기 */
+            font-weight: 600; /* 약간 굵은 글씨 */
+            text-decoration: none; /* 밑줄 제거 */
+            border-radius: 20%; /* 둥근 모서리 (radius 20%) - 가이드에서 요구한 대로 */
+            transition: all 0.3s ease; /* 부드러운 효과 */
+            box-shadow: 0 4px 15px rgba(5,47,93,0.3); /* 버튼 그림자 */
+        }
+
+        /* 구매하기 버튼에 마우스 올렸을 때 - 버튼이 반응하는 효과예요 */
+        .purchase-btn:hover {
+            background-color: #041f42; /* 더 진한 파란색 */
+            transform: translateY(-2px); /* 살짝 위로 올라가는 효과 */
+            box-shadow: 0 6px 20px rgba(5,47,93,0.4); /* 더 진한 그림자 */
+        }
+
+        /* 태블릿 크기에서의 반응형 디자인 (768px 이하) - 화면이 작아질 때 적용돼요 */
+        @media (max-width: 768px) {
+            .product-container {
+                padding: 30px 15px; /* 패딩 줄이기 */
+            }
+            
+            .shop-image {
+                height: 200px; /* 매장 이미지 높이 줄이기 */
+                margin-bottom: 30px; /* 여백 줄이기 */
+            }
+            
+            .product-title {
+                font-size: 2rem; /* 타이틀 글씨 크기 줄이기 */
+                margin-bottom: 30px; /* 여백 줄이기 */
+            }
+            
+            .products-grid {
+                gap: 20px; /* 제품들 사이 간격 줄이기 */
+                margin-bottom: 30px; /* 여백 줄이기 */
+            }
+            
+            .product-image {
+                height: 150px; /* 제품 이미지 높이 줄이기 */
+            }
+            
+            .product-content {
+                padding: 15px; /* 패딩 줄이기 */
+                min-height: 180px; /* 태블릿에서 최소 높이 조정 */
+            }
+            
+            .product-content h2 {
+                font-size: 1.1rem; /* 제품 제목 크기 줄이기 */
+            }
+            
+            .product-content p {
+                font-size: 0.85rem; /* 제품 설명 크기 줄이기 */
+            }
+        }
+
+        /* 모바일 크기에서의 반응형 디자인 (480px 이하) - 스마트폰에서 보기 좋게 해줘요 */
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr; /* 1열로 변경 (세로 배치) */
+                grid-template-rows: repeat(4, 1fr); /* 4행으로 변경 */
+                gap: 15px; /* 간격 더 줄이기 */
+            }
+            
+            .product-title {
+                font-size: 1.5rem; /* 타이틀 더 작게 */
+                margin-bottom: 25px; /* 여백 더 줄이기 */
+            }
+            
+            .shop-image {
+                height: 150px; /* 매장 이미지 더 작게 */
+                margin-bottom: 25px; /* 여백 더 줄이기 */
+            }
+            
+            .product-image {
+                height: 120px; /* 제품 이미지 더 작게 */
+            }
+            
+            .product-content {
+                padding: 12px; /* 패딩 더 줄이기 */
+                min-height: auto; /* 모바일에서는 최소 높이 제한 해제 */
+            }
+            
+            .product-content h2 {
+                font-size: 1rem; /* 제품 제목 더 작게 */
+                margin-bottom: 8px; /* 여백 줄이기 */
+            }
+            
+            .product-content p {
+                font-size: 0.8rem; /* 제품 설명 더 작게 */
+            }
+            
+            .purchase-btn {
+                padding: 12px 25px; /* 버튼 크기 줄이기 */
+                font-size: 1rem; /* 글자 크기 줄이기 */
+            }
+            
+            .purchase-section {
+                text-align: center; /* 모바일에서는 가운데 정렬 */
+                margin-top: 25px; /* 여백 줄이기 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 제품 섹션 시작 - 여기서부터 모든 제품 정보가 시작돼요 -->
+    <section class="product-container">
+        <!-- 매장 대표 이미지 - 예쁜 매장 사진을 보여줘요 -->
+        <img src="images/shop1.jpg" alt="중간계 AI 스튜디오 매장" class="shop-image">
+        
+        <!-- 제품 섹션 타이틀 - 큰 제목이에요 -->
+        <h1 class="product-title">중간계 AI 스튜디오 4가지 상품</h1>
+        
+        <!-- 제품들을 담는 그리드 - 4개 제품을 2x2로 정리해서 보여줘요 -->
+        <div class="products-grid">
+            <!-- 제품 1: AI 상세페이지 - 첫 번째 제품이에요 -->
+            <div class="product-card">
+                <img src="images/pd1.jpg" alt="AI 상세페이지" class="product-image">
+                <div class="product-content">
+                    <h2>제품1 AI 상세페이지</h2>
+                    <div class="product-desc-preview">
+                        <p>AI,인공지능 추천에 최적화된 상세페이지<br>
+                        상세페이지 기획 + 구성 + 디자인<br>
+                        고객의 구매 패턴을 분석하여 개인 맞춤형 상품을 구성합니다.</p>
+                    </div>
+                    <div class="product-desc-full">
+                        <p>AI,인공지능 추천에 최적화된 상세페이지<br>
+                        상세페이지 기획 + 구성 + 디자인<br>
+                        고객의 구매 패턴을 분석하여 개인 맞춤형 상품을 구성합니다.<br>
+                        AI 추천 알고리즘을 최적화하여, 전환율을 높일수 있는 상세페이지를 제작합니다.<br>
+                        기간. 난이도에 따라, 1주일~2주일<br><br>
+                        <strong>가격</strong><br>
+                        1. 디자인 작업 : 50~80만<br>
+                        2. 디자인 + 세부기획 : 100~200만<br>
+                        3. 디자인 + 세부기획 + 영상 + 효과 : 200~500만<br>
+                        촬영이 필요할 경우, 추가 기간, 비용, 발생</p>
+                    </div>
+                    <button class="toggle-btn" onclick="toggleDescription(this)">더보기</button>
+                </div>
+            </div>
+            
+            <!-- 제품 2: AI 최적화 쇼츠릴스 - 두 번째 제품이에요 -->
+            <div class="product-card">
+                <img src="images/pd2.jpg" alt="AI 최적화 쇼츠릴스" class="product-image">
+                <div class="product-content">
+                    <h2>제품2 AI 쇼츠, 릴스 (30~60초)</h2>
+                    <div class="product-desc-preview">
+                        <p>AI,인공지능 추천에 쇼츠,릴스 기획, 제작<br>
+                        고객의 제품과 브랜드 특징을 고려하여, 주목도 높은 쇼츠, 릴스를 제작합니다.<br>
+                        AI 추천 알고리즘을 최적화하여, 주목도, 전환율을 높일수 있는 쇼츠,릴스입니다.</p>
+                    </div>
+                    <div class="product-desc-full">
+                        <p>AI,인공지능 추천에 쇼츠,릴스 기획, 제작<br>
+                        고객의 제품과 브랜드 특징을 고려하여, 주목도 높은 쇼츠, 릴스를 제작합니다.<br>
+                        AI 추천 알고리즘을 최적화하여, 주목도, 전환율을 높일수 있는 쇼츠,릴스입니다.<br>
+                        기간. 난이도에 따라, 1주일~2주일<br><br>
+                        <strong>가격</strong><br>
+                        1. 단순 편집 : 30~50만<br>
+                        2. 기획 + 디자인 + 편집 : 50~100만<br>
+                        3. 기획 + 디자인 + 영상 효과 : 100~200만<br>
+                        4. 촬영이 필요할 경우, 추가 기간, 비용, 발생</p>
+                    </div>
+                    <button class="toggle-btn" onclick="toggleDescription(this)">더보기</button>
+                </div>
+            </div>
+            
+            <!-- 제품 3: AI 반응형 홈페이지 - 세 번째 제품이에요 -->
+            <div class="product-card">
+                <img src="images/pd3.jpg" alt="AI 반응형 홈페이지" class="product-image">
+                <div class="product-content">
+                    <h2>제품3. 웹페이지, 랜딩페이지</h2>
+                    <div class="product-desc-preview">
+                        <p>AI, 인공지능 최적화 웹페이지 기획, 디자인, 배포<br>
+                        AI 기반 전략으로 웹페이지 성과를 극대화하세요.<br>
+                        기획부터 디자인, 배포까지 전 과정 원스톱 지원!</p>
+                    </div>
+                    <div class="product-desc-full">
+                        <p>AI, 인공지능 최적화 웹페이지 기획, 디자인, 배포<br>
+                        AI 기반 전략으로 웹페이지 성과를 극대화하세요.<br>
+                        기획부터 디자인, 배포까지 전 과정 원스톱 지원! 방문자 행동을 분석해 전환율을 높입니다.<br>
+                        당신의 웹페이지,랜딩페이지를 이제 인공지능에 최적화 하십시오.<br>
+                        기간. 난이도에 따라, 1개월~3개월<br><br>
+                        <strong>가격</strong><br>
+                        1. 브랜드, 제품, 예약, 구매, 챗봇 : 500만<br>
+                        2. 브랜드, 제품, 예약, 구매, 챗봇 + 로그인인증 : 700만<br>
+                        3. 브랜드, 제품, 예약, 구매, 챗봇 + 로그인인증 + DB + 고객관리 : 1000만</p>
+                    </div>
+                    <button class="toggle-btn" onclick="toggleDescription(this)">더보기</button>
+                </div>
+            </div>
+            
+            <!-- 제품 4: 브랜드 Name Package - 네 번째 제품이에요 -->
+            <div class="product-card">
+                <img src="images/bname.png" alt="브랜드 Name Package" class="product-image">
+                <div class="product-content">
+                    <h2>제품4. 브랜드 Naming Package</h2>
+                    <div class="product-desc-preview">
+                        <p>현존 최고수준의 브랜드 Name Package<br>
+                        창업자의 철학을 담아 **직관적이고 감각적인 네이밍**을 만들어드립니다.<br>
+                        스시도쿠 겐, 견체공학, 헤겔의 빛, 신성의 숲, 쁘띠쿠아, 홍국시 등</p>
+                    </div>
+                    <div class="product-desc-full">
+                        <p>현존 최고수준의 브랜드 Name Package<br>
+                        창업자의 철학을 담아 **직관적이고 감각적인 네이밍**을 만들어드립니다.<br>
+                        스시도쿠 겐, 견체공학, 헤겔의 빛, 신성의 숲, 쁘띠쿠아, 홍국시, 도찜계찜, age button등<br>
+                        듣기만 하면 잊을수 없는 브랜드 이름을 지어드립니다<br>
+                        브랜드 이름, 슬로건, 약속, 페르소나등 브랜드전략의 기초를 만들어드립니다.<br><br>
+                        <strong>서비스 내용</strong><br>
+                        1. 브랜드 이름 대안 3가지 제시<br>
+                        2. 고객 페르소나 정의<br>
+                        3. 슬로건, 핵심 메시지, 브랜드 스토리 개발<br>
+                        기간. 약 1개월 소요<br>
+                        가격: 500만원 (중간계 기존 수강생은 30% 할인)</p>
+                    </div>
+                    <button class="toggle-btn" onclick="toggleDescription(this)">더보기</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 구매하기 버튼 섹션 - 맨 오른쪽에 구매 버튼을 놓아줘요 -->
+        <div class="purchase-section">
+            <a href="https://smartstore.naver.com/" target="_blank" class="purchase-btn">구매하기</a>
+        </div>
+    </section>
+
+    <!-- 페이지 내용 예시 - 추가 설명 영역이에요 -->
+    <main style="padding: 50px 20px; text-align: center; background-color: #f8f9fa;">
+        <h2>제품 섹션이 완성되었습니다!</h2>
+        <p>4가지 AI 제품이 2x2 그리드로 배치되었습니다.</p>
+        <p>각 제품의 '더보기' 버튼을 눌러 자세한 정보를 확인해보세요.</p>
+        <p>화면 크기를 조절하여 반응형 동작을 확인해보세요.</p>
+        <p>모바일에서는 1열로 세로 배치됩니다.</p>
+    </main>
+
+    <script>
+        // 더보기/접기 기능 - 가이드에서 요구한 3줄 보기/전체 보기 기능이에요
+        function toggleDescription(button) {
+            // 클릭한 버튼의 부모 요소에서 미리보기와 전체보기 영역을 찾아요
+            const productContent = button.parentElement;
+            const preview = productContent.querySelector('.product-desc-preview');
+            const full = productContent.querySelector('.product-desc-full');
+            
+            // 현재 미리보기가 보이는 상태인지 확인해요
+            if (preview.style.display !== 'none') {
+                // 미리보기를 숨기고 전체보기를 보여줘요
+                preview.style.display = 'none';
+                full.style.display = 'block';
+                button.textContent = '접기'; // 버튼 텍스트를 '접기'로 변경
+            } else {
+                // 전체보기를 숨기고 미리보기를 보여줘요
+                preview.style.display = 'block';
+                full.style.display = 'none';
+                button.textContent = '더보기'; // 버튼 텍스트를 '더보기'로 변경
+            }
+        }
+
+        // 제품 카드 클릭 시 효과음이나 추가 기능을 위한 JavaScript - 페이지를 더 재미있게 만들어줘요
+        document.addEventListener('DOMContentLoaded', function() {
+            // 모든 제품 카드를 찾아요
+            const productCards = document.querySelectorAll('.product-card');
+            
+            // 각 제품 카드에 클릭 이벤트 추가 - 클릭했을 때 반응하게 해줘요
+            productCards.forEach(function(card, index) {
+                card.addEventListener('click', function(event) {
+                    // 더보기 버튼을 클릭한 경우에는 카드 클릭 이벤트를 실행하지 않아요
+                    if (event.target.classList.contains('toggle-btn')) {
+                        return;
+                    }
+                    
+                    // 제품 카드를 클릭했을 때 콘솔에 메시지 출력
+                    console.log(`제품 ${index + 1}이 클릭되었습니다!`);
+                    
+                    // 클릭 효과 추가 (선택사항) - 클릭하면 살짝 작아졌다가 돌아와요
+                    card.style.transform = 'scale(0.98)';
+                    setTimeout(function() {
+                        card.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // 구매하기 버튼 클릭 시 확인 메시지 - 실수로 클릭하는 것을 방지해줘요
+            const purchaseBtn = document.querySelector('.purchase-btn');
+            purchaseBtn.addEventListener('click', function(event) {
+                // 사용자에게 확인 메시지 보여주기
+                const confirmed = confirm('네이버 스마트스토어로 이동하시겠습니까?');
+                
+                // 사용자가 취소를 누르면 링크 이동 막기
+                if (!confirmed) {
+                    event.preventDefault();
+                }
+            });
+        });
+
+        // 이미지 로딩 에러 처리 - 이미지가 없어도 페이지가 깨지지 않게 해줘요
+        document.addEventListener('DOMContentLoaded', function() {
+            // 모든 이미지를 찾아요
+            const images = document.querySelectorAll('img');
+            
+            // 각 이미지에 에러 처리 추가
+            images.forEach(function(img) {
+                img.addEventListener('error', function() {
+                    // 이미지 로딩에 실패하면 대체 텍스트 표시
+                    this.style.display = 'none';
+                    
+                    // 대체 텍스트를 담을 div 생성 - 이미지 대신 텍스트를 보여줘요
+                    const placeholder = document.createElement('div');
+                    placeholder.style.cssText = `
+                        width: 100%;
+                        height: ${this.classList.contains('shop-image') ? '300px' : '200px'};
+                        background-color: #f0f0f0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #666;
+                        font-size: 14px;
+                        border-radius: 10px;
+                    `;
+                    placeholder.textContent = '이미지를 불러올 수 없습니다';
+                    
+                    // 원본 이미지 다음에 대체 요소 삽입
+                    this.parentNode.insertBefore(placeholder, this.nextSibling);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
